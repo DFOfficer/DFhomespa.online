@@ -1,1805 +1,3610 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DF Homespa - Layanan Spa & Pijat Profesional</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* --- CSS VARIABLES & RESET --- */
-        :root {
-            /* THEME UPDATED TO PINK & CHEERFUL MODERN */
-            --primary-color: #E85D75; /* Modern Rose Pink */
-            --primary-dark: #C2425A;  /* Darker Pink for Hover/Text */
-            --accent-color: #FFC857; /* Cheerful Yellow/Orange */
-            --bg-light: #FFF0F3;      /* Very light pinkish background */
-            --bg-white: #FFFFFF;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --shadow: 0 5px 15px rgba(232, 93, 117, 0.15); /* Shadow tinted pink */
-            --shadow-hover: 0 15px 30px rgba(232, 93, 117, 0.25);
-            --radius: 12px;
-            --max-width: 1200px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: var(--bg-light);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: 0.3s;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        /* --- UTILITY CLASSES --- */
-        .container {
-            width: 90%;
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .section-padding {
-            padding: 80px 0;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 6px rgba(232, 93, 117, 0.3);
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(232, 93, 117, 0.4);
-        }
-
-        .btn-outline {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            background: transparent;
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .section-title {
-            margin-bottom: 60px;
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .section-title p {
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
-
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background-color: var(--bg-white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 0;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-img {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .logo span {
-            color: var(--primary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            font-weight: 400;
-            font-size: 1rem;
-            color: var(--text-dark);
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent-color);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            cursor: pointer;
-        }
-
-        /* --- HERO SECTION --- */
-        #hero {
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/u/0/d/1R7xS3b2Qn5X2Yzw9s0BSb9RUvkSpK-Oi');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            line-height: 1.2;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #f0f0f0;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        }
-
-        /* --- ABOUT SECTION --- */
-        #about {
-            background-color: var(--bg-white);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-img img {
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary-dark);
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: var(--text-light);
-        }
-
-        /* --- SERVICES SECTION --- */
-        #services {
-            background-color: var(--bg-light);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--bg-white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: all 0.4s ease;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.03);
-            position: relative;
-            height: 100%;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .card-image-wrapper {
-            position: relative;
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .card-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .service-card:hover .card-image-wrapper img {
-            transform: scale(1.1);
-        }
-
-        .card-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--accent-color);
-            color: #333;
-            padding: 5px 12px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            border-radius: 20px;
-            text-transform: uppercase;
-            z-index: 2;
-        }
-
-        .card-body {
-            padding: 30px 25px;
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .card-body h3 {
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-            color: var(--primary-dark);
-        }
-
-        .price {
-            display: block;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .card-body p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.8;
-            flex-grow: 1;
-        }
-
-        /* --- FEATURES --- */
-        #features {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        #features .section-title h2 {
-            color: white;
-        }
-        
-        #features .section-title p {
-            color: #ffffff; 
-        }
-
-        #features .section-title::after {
-            background-color: var(--accent-color);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            text-align: left;
-        }
-
-        .feature-item {
-            background: rgba(255,255,255,0.15);
-            padding: 30px;
-            border-radius: var(--radius);
-        }
-
-        .feature-item i {
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-        }
-
-        .feature-item h3 {
-            color: white;
-            margin-bottom: 10px;
-            font-family: 'Lato', sans-serif;
-            font-size: 1.2rem;
-        }
-
-        .feature-item p {
-            color: rgba(255,255,255,0.9);
-            font-size: 0.9rem;
-        }
-
-        /* --- GALLERY SECTION --- */
-        #gallery {
-            background-color: var(--bg-white);
-            padding-bottom: 60px;
-        }
-
-        .gallery-slider-wrapper {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-hover);
-            overflow: hidden;
-            background: #000;
-        }
-
-        .gallery-track {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .gallery-slide {
-            min-width: 100%;
-            position: relative;
-        }
-
-        .gallery-slide img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            display: block;
-            opacity: 0.9;
-        }
-
-        .gallery-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            color: var(--primary-dark);
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-            font-size: 1.2rem;
-        }
-
-        .gallery-btn:hover {
-            background-color: var(--accent-color);
-            color: white;
-        }
-
-        .g-prev-btn { left: 20px; }
-        .g-next-btn { right: 20px; }
-
-        .gallery-dots {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 25px;
-        }
-
-        .g-dot {
-            width: 12px;
-            height: 12px;
-            background-color: #ddd;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .g-dot.active {
-            background-color: var(--primary-color);
-            transform: scale(1.3);
-        }
-
-        /* --- TESTIMONIALS --- */
-        #testimonials {
-            background-color: var(--bg-light);
-            overflow: hidden;
-        }
-
-        .slider-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .slider-wrapper {
-            overflow: hidden;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            background: var(--bg-white);
-        }
-
-        .slider-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .slide {
-            min-width: 100%;
-            padding: 40px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .quote-icon {
-            font-size: 3rem;
-            color: rgba(232, 93, 117, 0.1); 
-            margin-bottom: 10px;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .client-info h4 {
-            font-size: 1.1rem;
-            font-family: 'Lato', sans-serif;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-
-        .stars {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-        }
-
-        .slider-btn:hover {
-            background-color: var(--accent-color);
-        }
-
-        .prev-btn { left: -10px; }
-        .next-btn { right: -10px; }
-
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            background-color: #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .dot.active {
-            background-color: var(--primary-color);
-            transform: scale(1.2);
-        }
-
-        /* --- LOCATION --- */
-        #location {
-            background-color: var(--bg-light);
-        }
-
-        .location-content {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .map-wrapper {
-            width: 100%;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 5px solid white;
-            height: 400px; 
-        }
-
-        .map-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            display: block;
-            border: none;
-        }
-
-        .info-card {
-            background-color: var(--bg-white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 400px;
-        }
-
-        .info-img {
-            height: 150px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .info-body {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .info-item i {
-            width: 30px;
-            color: var(--primary-color);
-            font-size: 1.1rem;
-            text-align: center;
-            margin-right: 10px;
-            margin-top: 3px;
-        }
-
-        .info-item strong {
-            display: block;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-dark);
-            font-size: 0.9rem;
-        }
-
-        .info-item span {
-            font-size: 0.95rem;
-            color: var(--text-light);
-        }
-
-        .location-cta {
-            margin-top: auto;
-            text-align: center;
-        }
-
-        /* --- BOOKING & PROCEDURE SECTION --- */
-        #booking {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .booking-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr; 
-            gap: 50px;
-            align-items: center;
-        }
-
-        .booking-info {
-            color: white;
-        }
-
-        .booking-info h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: white;
-            line-height: 1.2;
-        }
-
-        .booking-info p {
-            font-size: 1.2rem;
-            color: rgba(255,255,255,0.9);
-            line-height: 1.6;
-        }
-
-        .booking-form-wrapper {
-            background: white;
-            color: var(--text-dark);
-            max-width: 100%;
-            padding: 40px;
-            border-radius: var(--radius);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .booking-form-wrapper h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-            color: var(--primary-dark);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-family: 'Lato', sans-serif;
-            transition: border 0.3s;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(232, 93, 117, 0.1);
-        }
-
-        /* --- FOOTER & MODAL STYLES (UPDATED 4 COLUMNS) --- */
-        footer {
-            background-color: #2C2C2C;
-            color: white;
-            padding-top: 60px;
-        }
-
-        /* Grid Layout Update */
-        .footer-grid {
-            display: grid;
-            /* Reduced minmax from 250px to 220px to fit 4 cols on desktop/tablet */
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px; 
-            margin-bottom: 40px;
-        }
-
-        .footer-col h3 {
-            color: white;
-            margin-bottom: 15px;
-            font-size: 1.1rem; /* Reduced from 1.4rem */
-        }
-
-        /* Text Size Reduction */
-        .footer-col p, .footer-col a {
-            color: #ccc;
-            margin-bottom: 8px; /* Reduced from 10px */
-            display: block;
-            font-size: 0.85rem; /* Reduced from 0.95rem */
-            line-height: 1.5;
-        }
-        
-        .footer-col a:hover {
-            color: var(--accent-color);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .social-links a {
-            width: 35px; /* Slightly smaller */
-            height: 35px;
-            background: rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        /* --- PAYMENT INFO SECTION (Column 4) --- */
-        .payment-section {
-            /* Border removed since it's now its own column, adds visual clutter */
-            margin-top: 0;
-        }
-
-        .payment-title {
-            font-size: 0.8rem; /* Reduced from 1rem */
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .bank-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px; /* Reduced from 10px */
-            background: rgba(255,255,255,0.05);
-            padding: 6px 10px; /* Reduced from 8px 12px */
-            border-radius: 6px;
-            transition: 0.3s;
-        }
-
-        .bank-row:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        .bank-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .bank-icon {
-            font-size: 1rem; /* Reduced from 1.2rem */
-            color: white;
-            width: 20px;
-            text-align: center;
-        }
-
-        .bank-name {
-            font-weight: bold;
-            font-size: 0.8rem; /* Reduced from 0.9rem */
-            color: #ffffff;
-        }
-
-        .account-number {
-            font-family: 'Courier New', monospace;
-            font-size: 0.75rem; /* Reduced from 0.85rem */
-            color: #ffffff;
-            cursor: pointer;
-            padding: 3px 6px; /* Reduced padding */
-            border-radius: 4px;
-            background: rgba(0,0,0,0.2);
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .account-number:hover {
-            color: var(--accent-color);
-            background: rgba(232, 93, 117, 0.2);
-        }
-
-        .account-number i {
-            font-size: 0.6rem;
-            opacity: 0.7;
-        }
-
-        .qris-trigger {
-            margin-top: 10px;
-            font-size: 0.8rem; /* Reduced from 0.9rem */
-            color: #ffffff;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.3s;
-        }
-
-        .qris-trigger:hover {
-            color: var(--accent-color);
-            text-decoration: underline;
-        }
-
-        /* --- QRIS MODAL --- */
-        .qris-modal {
-            display: none; 
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .qris-content {
-            background-color: #fefefe;
-            padding: 30px;
-            border-radius: var(--radius);
-            width: 90%;
-            max-width: 350px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            animation: slideUp 0.4s ease;
-        }
-
-        .qris-content img {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 15px;
-            border: 2px solid var(--primary-color);
-            border-radius: 8px;
-            padding: 5px;
-            background: white;
-        }
-
-        .qris-content h4 {
-            font-family: 'Lato', sans-serif;
-            font-size: 1.2rem;
-            color: var(--primary-dark);
-            margin-bottom: 5px;
-        }
-
-        .qris-content p {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .close-qris {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .close-qris:hover {
-            color: var(--primary-color);
-        }
-
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-
-        @keyframes slideUp {
-            from {transform: translateY(50px); opacity: 0;}
-            to {transform: translateY(0); opacity: 1;}
-        }
-
-        .copyright {
-            background-color: #1a1a1a;
-            text-align: center;
-            padding: 20px;
-            color: #888;
-            font-size: 0.85rem;
-        }
-
-        /* --- WA FLOATING --- */
-        @keyframes goyang-wa {
-            0% { transform: rotate(0deg); }
-            15% { transform: rotate(-20deg); }
-            30% { transform: rotate(20deg); }
-            45% { transform: rotate(-20deg); }
-            60% { transform: rotate(20deg); }
-            75% { transform: rotate(0deg); }
-            100% { transform: rotate(0deg); }
-        }
-
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 1001;
-            animation: goyang-wa 2.5s infinite ease-in-out;
-        }
-
-        .wa-float:hover {
-            background-color: #20BA5C;
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .location-content {
-                grid-template-columns: 1fr;
-            }
-            .map-wrapper, .info-card {
-                height: 350px;
-            }
-            .booking-grid {
-                grid-template-columns: 1fr;
-            }
-            .booking-info {
-                text-align: center;
-                margin-bottom: 30px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--bg-white);
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
-                clip-path: circle(0% at 100% 0);
-                transition: 0.5s ease-in-out;
-            }
-
-            .nav-links.active {
-                clip-path: circle(150% at 100% 0);
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-img {
-                order: -1;
-            }
-
-            .slider-btn {
-                width: 35px;
-                height: 35px;
-            }
-            
-            .prev-btn { left: -15px; }
-            .next-btn { right: -15px; }
-            
-            /* Mobile Payment Adjustments */
-            .bank-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
-            }
-            .account-number {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header / Navigation -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <img src="https://z-cdn-media.chatglm.cn/files/c232cdea-9649-43fb-86a9-57d0825ad637.png?auth_key=1867126908-29f0073e744e4aa4925500c3c72ffadf-0-2fffe6775687759fef9d56b460d13183" alt="Logo DF Homespa" class="logo-img">
-                    <span>DF Homespa</span>
-                </div>
-                <div class="nav-links" id="navLinks">
-                    <a href="#hero" onclick="toggleMenu()">Beranda</a>
-                    <a href="#about" onclick="toggleMenu()">Tentang Kami</a>
-                    <a href="#services" onclick="toggleMenu()">Layanan</a>
-                    <a href="#booking" onclick="toggleMenu()">Cara Pesan</a>
-                    <a href="#testimonials" onclick="toggleMenu()">Testimoni</a>
-                    <a href="#location" onclick="toggleMenu()">Lokasi</a>
-                    <a href="#booking" onclick="toggleMenu()" class="btn btn-primary" style="padding: 8px 20px; margin-left: 10px;">Reservasi</a>
-                </div>
-                <div class="mobile-menu-btn" onclick="toggleMenu()">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section id="hero">
-            <div class="container hero-content">
-                <h1>Relaksasi Total<br>Di Rumah Anda</h1>
-                <p>Layanan spa profesional & terpercaya langsung ke lokasi Anda. Nikmati perawatan tubuh premium tanpa harus keluar rumah.</p>
-                <a href="#booking" class="btn btn-primary">
-                    <i class="fa-brands fa-whatsapp"></i> Pesan Sekarang
-                </a>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="section-padding">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-img">
-                        <img src="https://picsum.photos/seed/spa_therapist/600/400" alt="Terapis DF Homespa">
-                    </div>
-                    <div class="about-text">
-                        <h4>Tentang DF Homespa</h4>
-                        <h3>Mitra Kesehatan & Kecantikan Keluarga Anda</h3>
-                        <p>DF Homespa adalah penyedia layanan pijat dan spa panggilan yang berdedikasi menghadirkan ketenangan dan kesehatan bagi keluarga Anda. Kami memahami kesibukan Anda, oleh karena itu kami membawa spa mewah ke ruang tamu atau kamar tidur Anda.</p>
-                        <p>Setiap terapis kami telah melewati seleksi ketat, pelatihan profesional, dan sertifikasi kesehatan rutin. Kami memastikan privasi, kebersihan, dan kenyamanan Anda adalah prioritas utama.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="section-padding">
-            <div class="container">
-                <div class="section-title text-center">
-                    <h2>Daftar Layanan Kami</h2>
-                    <p>Pilihan perawatan komplit sesuai kebutuhan Anda</p>
-                </div>
-                
-                <div class="services-grid">
-                    <!-- Service 1: Full Body Massage -->
-                    <article class="service-card">
-                        <div class="card-image-wrapper">
-                            <span class="card-badge">Best Seller</span>
-                            <img src="https://z-cdn-media.chatglm.cn/files/90cc8468-b95d-41df-b882-ac441f48b0e6.png?auth_key=1867119238-24bc3e939dfd45c3bdf47071c21bf5f6-0-42fa817ffa2ec14fd1087b633330e435" alt="Full Body Massage">
-                        </div>
-                        <div class="card-body">
-                            <h3>Full Body Massage</h3>
-                            <p>Pijat menyeluruh untuk relaksasi otot dan melancarkan peredaran darah. Tersedia teknik Jawa, Bali, dan Shiatsu.</p>
-                        </div>
-                    </article>
-
-                    <!-- Service 2: Menaikkan Rahim -->
-                    <article class="service-card">
-                        <div class="card-image-wrapper">
-                            <span class="card-badge">Spesial</span>
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1HtncS9N3ax4vIbBsOPqo3tOKMXKmnrav" alt="Menaikkan Rahim">
-                        </div>
-                        <div class="card-body">
-                            <h3>Menaikkan Rahim</h3>
-                            <p>Terapi khusus untuk kesehatan organ kewanitaan, membantu memulihkan pasca melahirkan, dan menjaga kebugaran.</p>
-                        </div>
-                    </article>
-
-                    <!-- Service 3: Buka Aura Wajah -->
-                    <article class="service-card">
-                        <div class="card-image-wrapper">
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1dePowoCoMF5z5MBzAmwmLuMI1AomI6aF" alt="Buka Aura Wajah">
-                        </div>
-                        <div class="card-body">
-                            <h3>Buka Aura Wajah</h3>
-                            <p>Perawatan wajah mendalam untuk mencerahkan, mengencangkan kulit, serta merawat aura wajah agar tampak segar dan bersinar.</p>
-                        </div>
-                    </article>
-
-                    <!-- Service 4: Lulur & Scrub -->
-                    <article class="service-card">
-                        <div class="card-image-wrapper">
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1XD-clgcGhSk57VjX4gRtS-9HgTXlIcX0" alt="Lulur & Scrub">
-                        </div>
-                        <div class="card-body">
-                            <h3>Lulur & Scrub</h3>
-                            <p>Membersihkan sel kulit mati, mencerahkan, dan menghaluskan kulit. Pilihan bahan: Susu, Green Tea, dan Whitening.</p>
-                        </div>
-                    </article>
-
-                    <!-- Service 5: Creambath -->
-                    <article class="service-card">
-                        <div class="card-image-wrapper">
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1irNYS9b9DPdfoxTGRZy_q6sPGDjCu3lG" alt="Refleksi">
-                        </div>
-                        <div class="card-body">
-                            <h3>Creambath</h3>
-                            <p>Perawatan rambut dan kulit kepala dengan pijatan relaksasi untuk menutrisi rambut, meredakan ketegangan kepala, serta memberikan efek segar dan rileks.</p>
-                        </div>
-                    </article>
-
-                    <!-- Service 6: Back Alignment Therapy -->
-                    <article class="service-card">
-                        <div class="card-image-wrapper">
-                            <img src="https://lh3.googleusercontent.com/u/0/d/10z8SurPkO4rCwpsyz_ZKVNoZNnXnjxUN" alt="Back Alignment Therapy">
-                        </div>
-                        <div class="card-body">
-                            <h3>Back Alignment Therapy</h3>
-                            <p>Terapi punggung dengan tekanan terkontrol untuk membantu merilekskan otot, mengurangi ketegangan punggung, dan memberikan rasa lega pada tubuh.</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features / Why Us -->
-        <section id="features" class="section-padding">
-            <div class="container">
-                <div class="section-title text-center">
-                    <h2>Mengapa DF Homespa?</h2>
-                    <p>Komitmen kami untuk memberikan pelayanan terbaik</p>
-                </div>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <i class="fa-solid fa-user-check"></i>
-                        <h3>Terapis Tersertifikasi</h3>
-                        <p>Tim terapis kami berpengalaman, ramah, dan telah melewati training khusus home spa.</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fa-solid fa-pump-soap"></i>
-                        <h3>Standar Higienis</h3>
-                        <p>Menggunakan handuk bersih (laundered), sarung tangan, dan alat pribadi untuk setiap klien.</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fa-solid fa-clock"></i>
-                        <h3>Respon Cepat</h3>
-                        <p>Booking mudah via WhatsApp, admin fast respon, dan terapis datang tepat waktu.</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fa-solid fa-tags"></i>
-                        <h3>Harga Terjangkau</h3>
-                        <p>Nikmati layanan spa kualitas premium dengan harga yang bersahabat dan transparan.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Section (Single Image Slider) -->
-        <section id="gallery" class="section-padding">
-            <div class="container">
-                <div class="section-title text-center">
-                    <h2>Galeri Aktivitas</h2>
-                    <p>Dokumentasi kepuasan pelanggan kami</p>
-                </div>
-                
-                <div class="gallery-slider-wrapper">
-                    <button class="gallery-btn g-prev-btn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="gallery-btn g-next-btn"><i class="fas fa-chevron-right"></i></button>
-                    
-                    <div class="gallery-track" id="galleryTrack">
-                        <!-- Slide 1 -->
-                        <div class="gallery-slide">
-                            <img src="https://picsum.photos/seed/spa_oil/800/500" alt="Minyak Aromaterapi">
-                        </div>
-                        <!-- Slide 2 -->
-                        <div class="gallery-slide">
-                            <img src="https://picsum.photos/seed/towel/800/500" alt="Handuk Bersih">
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="gallery-slide">
-                            <img src="https://picsum.photos/seed/candles/800/500" alt="Suasana Santai">
-                        </div>
-                        <!-- Slide 4 -->
-                        <div class="gallery-slide">
-                            <img src="https://picsum.photos/seed/stones/800/500" alt="Batu Terapi">
-                        </div>
-                        <!-- Slide 5 -->
-                        <div class="gallery-slide">
-                            <img src="https://picsum.photos/seed/flower_bath/800/500" alt="Flower Bath">
-                        </div>
-                        <!-- Slide 6 -->
-                        <div class="gallery-slide">
-                            <img src="https://picsum.photos/seed/massage_tools/800/500" alt="Peralatan Pijat">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gallery-dots" id="galleryDots"></div>
-            </div>
-        </section>
-
-        <!-- Testimonials Slider Section -->
-        <section id="testimonials" class="section-padding">
-            <div class="container">
-                <div class="section-title text-center">
-                    <h2>Kata Pelanggan</h2>
-                    <p>Apa kata mereka yang telah mencoba layanan DF Homespa</p>
-                </div>
-
-                <div class="slider-container">
-                    <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-                    
-                    <div class="slider-wrapper">
-                        <div class="slider-track" id="sliderTrack">
-                            <!-- Slide 1 -->
-                            <div class="slide">
-                                <i class="fa-solid fa-quote-left quote-icon"></i>
-                                <p class="testimonial-text">"Pelayanan sangat memuaskan! Terapis datang tepat waktu, membawa perlengkapan lengkap termasuk matras dan alas. Badan jadi enteng banget."</p>
-                                <div class="client-info">
-                                    <h4>Siti Aminah</h4>
-                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                                </div>
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="slide">
-                                <i class="fa-solid fa-quote-left quote-icon"></i>
-                                <p class="testimonial-text">"Suka banget sama lulur susunya, wangi dan bikin kulit halus. Sangat recommended buat yang capek kerja dan gak mau keluar rumah."</p>
-                                <div class="client-info">
-                                    <h4>Amalia</h4>
-                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
-                                </div>
-                            </div>
-                            <!-- Slide 3 -->
-                            <div class="slide">
-                                <i class="fa-solid fa-quote-left quote-icon"></i>
-                                <p class="testimonial-text">"Pijat Rahimnya ampuh banget buat saya pasca lahiran. Terapisnya juga sabar dan paham betul tekniknya."</p>
-                                <div class="client-info">
-                                    <h4>Rina Mariani</h4>
-                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                                </div>
-                            </div>
-                            <!-- Slide 4 -->
-                            <div class="slide">
-                                <i class="fa-solid fa-quote-left quote-icon"></i>
-                                <p class="testimonial-text">"Buka Aura Wajah-nya bikin muka jadi glowing dan cerah. Jadi pede keluar rumah tanpa makeup tebal."</p>
-                                <div class="client-info">
-                                    <h4>Diana Putri</h4>
-                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                                </div>
-                            </div>
-                            <!-- Slide 5 -->
-                            <div class="slide">
-                                <i class="fa-solid fa-quote-left quote-icon"></i>
-                                <p class="testimonial-text">"Awalnya ragu, tapi setelah coba langsung jatuh cinta! Terapisnya sangat sopan dan profesional."</p>
-                                <div class="client-info">
-                                    <h4>Ibu Dira</h4>
-                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                                </div>
-                            </div>
-                            <!-- Slide 6 -->
-                            <div class="slide">
-                                <i class="fa-solid fa-quote-left quote-icon"></i>
-                                <p class="testimonial-text">"Bookingnya gampang banget via WA. Respon cepat dan harga terjangkau untuk pelayanan sekelas hotel."</p>
-                                <div class="client-info">
-                                    <h4>Maya Sari</h4>
-                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-                    
-                    <!-- Dots Navigation -->
-                    <div class="slider-dots" id="sliderDots"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Location Section -->
-        <section id="location" class="section-padding">
-            <div class="container">
-                <div class="section-title text-center">
-                    <h2>Lokasi & Kontak</h2>
-                    <p>Kami siap melayani area Makassar, Gowa, Maros dan sekitarnya</p>
-                </div>
-                
-                <div class="location-content">
-                    <!-- Kolom 1: Peta -->
-                    <div class="map-wrapper">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.6499847271125!2d119.44446257434913!3d-5.159890652127798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbf1d760bd3e78d%3A0xee6220b7dd5bee37!2sDfSpa%20Hawai%20Inn!5e0!3m2!1sen!2sid!4v1767117178628!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-
-                    <!-- Kolom 2: Kartu Info -->
-                    <div class="info-card">
-                        <img src="https://picsum.photos/seed/spa_lobby/600/300" alt="Suasana DF Homespa" class="info-img">
-                        <div class="info-body">
-                            <div class="info-item">
-                                <i class="fa-solid fa-location-dot"></i>
-                                <div>
-                                    <strong>Alamat Kantor</strong>
-                                    <span>Jl. Adiyaksa, Kota Makassar</span>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <i class="fa-regular fa-clock"></i>
-                                <div>
-                                    <strong>Jam Operasional</strong>
-                                    <span>Setiap Hari: 09.00 - 22.00 WIB</span>
-                                </div>
-                            </div>
-                            <div class="location-cta">
-                                <a href="https://www.google.com/maps/dir//DfSpa+Hawai+Inn,+Jl.+Adiyaksa,+Masale,+Panakkukang,+Makassar+City,+South+Sulawesi+90132/@-5.1598957,119.4285834,15z/data=!4m16!1m7!3m6!1s0x2dbf1d760bd3e78d:0xee6220b7dd5bee37!2sDfSpa+Hawai+Inn!8m2!3d-5.159896!4d119.4470375!16s%2Fg%2F11fr32zsnz!4m7!1m0!1m5!1m1!1s0x2dbf1d760bd3e78d:0xee6220b7dd5bee37!2m2!1d119.4470375!2d-5.159896?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-primary" style="font-size: 0.8rem; padding: 5px 20px;">
-                                    <i class="fa-solid fa-diamond-turn-right"></i> Petunjuk Arah
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MERGED SECTION: Booking & Procedure -->
-        <section id="booking" class="section-padding">
-            <div class="container">
-                <div class="booking-grid">
-                    <!-- Left Side: Text Content -->
-                    <div class="booking-info">
-                        <h2>Cara Pemesanan</h2>
-                        <p>Mudah dan simpel, cukup dari genggaman tangan Anda</p>
-                    </div>
-                    
-                    <!-- Right Side: Booking Form -->
-                    <div class="booking-form-wrapper">
-                        <h3>Form Reservasi</h3>
-                        <form id="whatsappForm" onsubmit="kirimWhatsApp(event)">
-                            <div class="form-group">
-                                <label for="nama">Nama Lengkap</label>
-                                <input type="text" id="nama" class="form-control" placeholder="Masukkan nama Anda" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="alamat">Alamat Lengkap</label>
-                                <textarea id="alamat" class="form-control" rows="3" placeholder="Alamat lengkap untuk kedatangan terapis" required></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="layanan">Jenis Layanan</label>
-                                <select id="layanan" class="form-control" required>
-                                    <option value="" disabled selected>Pilih Layanan...</option>
-                                    <option value="Full Body Massage">Full Body Massage</option>
-                                    <option value="Pijat Menaikkan Rahim">Pijat Menaikkan Rahim</option>
-                                    <option value="Buka Aura Wajah">Buka Aura Wajah</option>
-                                    <option value="Lulur & Scrub">Lulur & Scrub</option>
-                                    <option value="Creambath">Creambath</option>
-                                    <option value="Back Alignment Therapy">Back Alignment Therapy</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="tanggal">Tanggal Pemesanan</label>
-                                <input type="date" id="tanggal" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="jam">Jam Layanan</label>
-                                <input type="time" id="jam" class="form-control" required>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary" style="width: 100%;">
-                                <i class="fa-brands fa-whatsapp"></i> Ajukan Reservasi
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer (Updated 4 Columns) -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-grid">
-                <!-- Column 1 -->
-                <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 15px;">
-                        <img src="https://z-cdn-media.chatglm.cn/files/c232cdea-9649-43fb-86a9-57d0825ad637.png?auth_key=1867126908-29f0073e744e4aa4925500c3c72ffadf-0-2fffe6775687759fef9d56b460d13183" alt="Logo DF Homespa" class="logo-img">
-                        <span>DF Homespa</span>
-                    </div>
-                    <p>Layanan spa dan pijat panggilan profesional terpercaya untuk kesehatan dan kecantikan keluarga Anda. Kenyamanan rumah Anda adalah prioritas kami.</p>
-                </div>
-                
-                <!-- Column 2 -->
-                <div class="footer-col">
-                    <h3>Layanan Populer</h3>
-                    <a href="#services">Full Body Massage</a>
-                    <a href="#services">Menaikkan Rahim</a>
-                    <a href="#services">Buka Aura Wajah</a>
-                    <a href="#services">Back Alignment Therapy</a>
-                    <a href="#services">Lulur & Scrub</a>
-                </div>
-                
-                <!-- Column 3: Kontak & Sosial -->
-                <div class="footer-col">
-                    <h3>Kontak & Sosial</h3>
-                    <p><i class="fa-brands fa-whatsapp"></i> 0821 9379 5693</p>
-                    <p><i class="fa-regular fa-envelope"></i> info@dfhomespa.com</p>
-                    
-                    <div class="social-links">
-                        <a href="https://instagram.com/dfhomespa" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/DFHomeSpaOfficial" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://www.tiktok.com/@df_homespa" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-                    </div>
-                </div>
-
-                <!-- Column 4: Payment Info -->
-                <div class="footer-col">
-                    <h3>Info Pembayaran</h3>
-                    <div class="payment-section">
-                        <!-- Bank BCA -->
-                        <div class="bank-row">
-                            <div class="bank-left">
-                                <i class="fa-solid fa-building-columns bank-icon"></i>
-                                <span class="bank-name">BCA</span>
-                            </div>
-                            <div class="account-number" onclick="copyToClipboard(this, '12345678799')" title="Klik untuk menyalin">
-                                <span>12345678799</span>
-                                <i class="fa-regular fa-copy"></i>
-                            </div>
-                        </div>
-
-                        <!-- Bank Mandiri -->
-                        <div class="bank-row">
-                            <div class="bank-left">
-                                <i class="fa-solid fa-building-columns bank-icon"></i>
-                                <span class="bank-name">Mandiri</span>
-                            </div>
-                            <div class="account-number" onclick="copyToClipboard(this, '12345678799')" title="Klik untuk menyalin">
-                                <span>12345678799</span>
-                                <i class="fa-regular fa-copy"></i>
-                            </div>
-                        </div>
-
-                        <!-- QRIS Link -->
-                        <div class="qris-trigger" onclick="openQRIS()">
-                            <i class="fa-solid fa-qrcode"></i>
-                            <span>Klik untuk Kode QRIS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 DF Homespa. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <!-- QRIS Modal Popup -->
-    <div id="qrisModal" class="qris-modal">
-        <div class="qris-content">
-            <span class="close-qris" onclick="closeQRIS()">&times;</span>
-            <h4>Scan QRIS</h4>
-            <!-- Menggunakan API QR Code Generator untuk membuat QR otomatis dari nomor DANA -->
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=6282193795693" alt="QRIS DANA">
-            <p>Scan untuk pembayaran via DANA</p>
-        </div>
-    </div>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/6282193795693?text=Halo%20DF%20Homespa,%20saya%20mau%20booking%20spa." class="wa-float" target="_blank" title="Chat WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <!-- Scripts -->
-    <script>
-        // --- Mobile Menu Toggle ---
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
-
-        // --- Booking Form Logic ---
-        function kirimWhatsApp(e) {
-            e.preventDefault(); // Mencegah reload halaman
-
-            // Ambil nilai dari form
-            const nama = document.getElementById('nama').value;
-            const alamat = document.getElementById('alamat').value;
-            const layanan = document.getElementById('layanan').value;
-            const tanggal = document.getElementById('tanggal').value;
-            const jam = document.getElementById('jam').value;
-
-            // Nomor Admin WA (Format: 628...)
-            const nomorAdmin = "6282193795693";
-
-            // Format Pesan
-            const pesan = `Halo Admin DF Homespa, saya ingin memesan layanan spa.
-
-*Nama:* ${nama}
-*Alamat:* ${alamat}
-*Jenis Layanan:* ${layanan}
-*Tanggal:* ${tanggal}
-*Jam:* ${jam}
-
-Mohon konfirmasinya. Terima kasih.`;
-
-            // Encode pesan agar aman untuk URL
-            const encodedPesan = encodeURIComponent(pesan);
-
-            // Buka WhatsApp
-            const urlWa = `https://wa.me/${nomorAdmin}?text=${encodedPesan}`;
-            window.open(urlWa, '_blank');
-        }
-
-        // --- Copy to Clipboard Function ---
-        function copyToClipboard(element, text) {
-            navigator.clipboard.writeText(text).then(() => {
-                const originalContent = element.innerHTML;
-                
-                // Visual feedback: Ganti ikon jadi check dan teks jadi "Tersalin"
-                element.innerHTML = '<i class="fa-solid fa-check"></i> <span>Tersalin!</span>';
-                element.style.color = '#4ade80'; // Green color
-                element.style.background = 'rgba(74, 222, 128, 0.2)';
-
-                // Reset setelah 2 detik
-                setTimeout(() => {
-                    element.innerHTML = originalContent;
-                    element.style.color = '';
-                    element.style.background = '';
-                }, 2000);
-            }).catch(err => {
-                console.error('Gagal menyalin: ', err);
-            });
-        }
-
-        // --- QRIS Modal Functions ---
-        function openQRIS() {
-            document.getElementById('qrisModal').style.display = 'flex';
-        }
-
-        function closeQRIS() {
-            document.getElementById('qrisModal').style.display = 'none';
-        }
-
-        // Close modal when clicking outside content
-        window.onclick = function(event) {
-            const modal = document.getElementById('qrisModal');
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // --- Testimonial Slider Logic ---
-        document.addEventListener('DOMContentLoaded', function() {
-            const track = document.getElementById('sliderTrack');
-            const slides = Array.from(track.children);
-            const nextBtn = document.querySelector('.next-btn');
-            const prevBtn = document.querySelector('.prev-btn');
-            const dotsContainer = document.getElementById('sliderDots');
-            
-            let currentIndex = 0;
-            let autoPlayInterval;
-
-            // Create Dots based on number of slides
-            slides.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.classList.add('dot');
-                if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => {
-                    goToSlide(index);
-                });
-                dotsContainer.appendChild(dot);
-            });
-
-            const dots = Array.from(dotsContainer.children);
-
-            // Function to move slide
-            function goToSlide(index) {
-                currentIndex = index;
-                const amountToMove = -currentIndex * 100;
-                track.style.transform = `translateX(${amountToMove}%)`;
-                
-                // Update dots
-                dots.forEach(dot => dot.classList.remove('active'));
-                dots[currentIndex].classList.add('active');
-            }
-
-            // Next Slide
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % slides.length;
-                goToSlide(currentIndex);
-                resetAutoPlay();
-            });
-
-            // Previous Slide
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-                goToSlide(currentIndex);
-                resetAutoPlay();
-            });
-
-            // Auto Play Function
-            function startAutoPlay() {
-                autoPlayInterval = setInterval(() => {
-                    currentIndex = (currentIndex + 1) % slides.length;
-                    goToSlide(currentIndex);
-                }, 5000); // Ganti slide setiap 5 detik
-            }
-
-            function resetAutoPlay() {
-                clearInterval(autoPlayInterval);
-                startAutoPlay();
-            }
-
-            // Start auto-play on load
-            startAutoPlay();
-
-            // --- GALLERY SLIDER LOGIC ---
-            const gTrack = document.getElementById('galleryTrack');
-            const gSlides = Array.from(gTrack.children);
-            const gNextBtn = document.querySelector('.g-next-btn');
-            const gPrevBtn = document.querySelector('.g-prev-btn');
-            const gDotsContainer = document.getElementById('galleryDots');
-
-            let gCurrentIndex = 0;
-            let gAutoPlayInterval;
-
-            // Create Gallery Dots
-            gSlides.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.classList.add('g-dot');
-                if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => {
-                    goToGallerySlide(index);
-                });
-                gDotsContainer.appendChild(dot);
-            });
-
-            const gDots = Array.from(gDotsContainer.children);
-
-            // Function to move gallery slide
-            function goToGallerySlide(index) {
-                gCurrentIndex = index;
-                const amountToMove = -gCurrentIndex * 100;
-                gTrack.style.transform = `translateX(${amountToMove}%)`;
-                
-                // Update dots
-                gDots.forEach(dot => dot.classList.remove('active'));
-                gDots[gCurrentIndex].classList.add('active');
-            }
-
-            // Next Slide Gallery
-            gNextBtn.addEventListener('click', () => {
-                gCurrentIndex = (gCurrentIndex + 1) % gSlides.length;
-                goToGallerySlide(gCurrentIndex);
-                resetGalleryAutoPlay();
-            });
-
-            // Previous Slide Gallery
-            gPrevBtn.addEventListener('click', () => {
-                gCurrentIndex = (gCurrentIndex - 1 + gSlides.length) % gSlides.length;
-                goToGallerySlide(gCurrentIndex);
-                resetGalleryAutoPlay();
-            });
-
-            // Auto Play Function Gallery
-            function startGalleryAutoPlay() {
-                gAutoPlayInterval = setInterval(() => {
-                    gCurrentIndex = (gCurrentIndex + 1) % gSlides.length;
-                    goToGallerySlide(gCurrentIndex);
-                }, 4000); // Ganti slide setiap 4 detik
-            }
-
-            function resetGalleryAutoPlay() {
-                clearInterval(gAutoPlayInterval);
-                startGalleryAutoPlay();
-            }
-
-            // Start gallery auto-play
-            startGalleryAutoPlay();
-        });
-    </script>
-</body>
-
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DF Homespa - Layanan Spa & Pijat Profesional</title>
+
+    
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+    <style>
+
+        /* --- CSS VARIABLES & RESET --- */
+
+        :root {
+
+            /* THEME UPDATED TO PINK & CHEERFUL MODERN */
+
+            --primary-color: #E85D75; /* Modern Rose Pink */
+
+            --primary-dark: #C2425A;  /* Darker Pink for Hover/Text */
+
+            --accent-color: #FFC857; /* Cheerful Yellow/Orange */
+
+            --bg-light: #FFF0F3;      /* Very light pinkish background */
+
+            --bg-white: #FFFFFF;
+
+            --text-dark: #333333;
+
+            --text-light: #666666;
+
+            --shadow: 0 5px 15px rgba(232, 93, 117, 0.15); /* Shadow tinted pink */
+
+            --shadow-hover: 0 15px 30px rgba(232, 93, 117, 0.25);
+
+            --radius: 12px;
+
+            --max-width: 1200px;
+
+        }
+
+
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+
+        body {
+
+            font-family: 'Lato', sans-serif;
+
+            color: var(--text-dark);
+
+            line-height: 1.6;
+
+            background-color: var(--bg-light);
+
+            overflow-x: hidden;
+
+        }
+
+
+
+        h1, h2, h3, h4 {
+
+            font-family: 'Playfair Display', serif;
+
+            color: var(--primary-color);
+
+        }
+
+
+
+        a {
+
+            text-decoration: none;
+
+            color: inherit;
+
+            transition: 0.3s;
+
+        }
+
+
+
+        ul {
+
+            list-style: none;
+
+        }
+
+
+
+        img {
+
+            max-width: 100%;
+
+            display: block;
+
+        }
+
+
+
+        /* --- UTILITY CLASSES --- */
+
+        .container {
+
+            width: 90%;
+
+            max-width: var(--max-width);
+
+            margin: 0 auto;
+
+            padding: 0 15px;
+
+        }
+
+
+
+        .section-padding {
+
+            padding: 80px 0;
+
+        }
+
+
+
+        .text-center {
+
+            text-align: center;
+
+        }
+
+
+
+        .btn {
+
+            display: inline-block;
+
+            padding: 12px 30px;
+
+            border-radius: 50px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            text-transform: uppercase;
+
+            font-size: 0.85rem;
+
+            letter-spacing: 1px;
+
+            border: 2px solid transparent;
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        .btn-primary {
+
+            background-color: var(--primary-color);
+
+            color: white;
+
+            box-shadow: 0 4px 6px rgba(232, 93, 117, 0.3);
+
+            border: none;
+
+        }
+
+
+
+        .btn-primary:hover {
+
+            background-color: var(--primary-dark);
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 12px rgba(232, 93, 117, 0.4);
+
+        }
+
+
+
+        .btn-outline {
+
+            border-color: var(--primary-color);
+
+            color: var(--primary-color);
+
+            background: transparent;
+
+        }
+
+
+
+        .btn-outline:hover {
+
+            background-color: var(--primary-color);
+
+            color: white;
+
+            transform: translateY(-3px);
+
+        }
+
+
+
+        .section-title {
+
+            margin-bottom: 60px;
+
+            position: relative;
+
+            padding-bottom: 20px;
+
+        }
+
+
+
+        .section-title h2 {
+
+            font-size: 2.5rem;
+
+            margin-bottom: 15px;
+
+            font-weight: 700;
+
+        }
+
+
+
+        .section-title p {
+
+            color: var(--text-light);
+
+            max-width: 700px;
+
+            margin: 0 auto;
+
+        }
+
+
+
+        .section-title::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 80px;
+
+            height: 3px;
+
+            background-color: var(--accent-color);
+
+        }
+
+
+
+        /* --- HEADER & NAVIGATION --- */
+
+        header {
+
+            background-color: var(--bg-white);
+
+            box-shadow: var(--shadow);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            padding: 15px 0;
+
+        }
+
+
+
+        nav {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+
+        .logo {
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: 1.8rem;
+
+            font-weight: 700;
+
+            color: var(--primary-color);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+
+
+        .logo-img {
+
+            height: 50px;
+
+            width: auto;
+
+            object-fit: contain;
+
+        }
+
+
+
+        .logo span {
+
+            color: var(--primary-color);
+
+        }
+
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 25px;
+
+        }
+
+
+
+        .nav-links a {
+
+            font-weight: 400;
+
+            font-size: 1rem;
+
+            color: var(--text-dark);
+
+            position: relative;
+
+        }
+
+
+
+        .nav-links a::after {
+
+            content: '';
+
+            position: absolute;
+
+            width: 0;
+
+            height: 2px;
+
+            bottom: -5px;
+
+            left: 0;
+
+            background-color: var(--accent-color);
+
+            transition: width 0.3s;
+
+        }
+
+
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+
+        }
+
+
+
+        .mobile-menu-btn {
+
+            display: none;
+
+            font-size: 1.5rem;
+
+            color: var(--primary-color);
+
+            cursor: pointer;
+
+        }
+
+
+
+        /* --- HERO SECTION --- */
+
+        #hero {
+
+            height: 90vh;
+
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/u/0/d/1R7xS3b2Qn5X2Yzw9s0BSb9RUvkSpK-Oi');
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+        }
+
+
+
+        .hero-content h1 {
+
+            font-size: 3.5rem;
+
+            margin-bottom: 20px;
+
+            color: white;
+
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+
+            line-height: 1.2;
+
+        }
+
+
+
+        .hero-content p {
+
+            font-size: 1.2rem;
+
+            margin-bottom: 30px;
+
+            max-width: 700px;
+
+            margin-left: auto;
+
+            margin-right: auto;
+
+            color: #f0f0f0;
+
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+
+        }
+
+
+
+        /* --- ABOUT SECTION --- */
+
+        #about {
+
+            background-color: var(--bg-white);
+
+        }
+
+
+
+        .about-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+
+            align-items: center;
+
+        }
+
+
+
+        .about-img img {
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow);
+
+        }
+
+
+
+        .about-text h3 {
+
+            font-size: 1.8rem;
+
+            margin-bottom: 20px;
+
+            color: var(--primary-dark);
+
+        }
+
+
+
+        .about-text p {
+
+            margin-bottom: 20px;
+
+            color: var(--text-light);
+
+        }
+
+
+
+        /* --- SERVICES SECTION --- */
+
+        #services {
+
+            background-color: var(--bg-light);
+
+        }
+
+
+
+        .services-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 30px;
+
+        }
+
+
+
+        .service-card {
+
+            background: var(--bg-white);
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow);
+
+            transition: all 0.4s ease;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+            border: 1px solid rgba(0,0,0,0.03);
+
+            position: relative;
+
+            height: 100%;
+
+        }
+
+
+
+        .service-card:hover {
+
+            transform: translateY(-10px);
+
+            box-shadow: var(--shadow-hover);
+
+        }
+
+
+
+        .card-image-wrapper {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 220px;
+
+            overflow: hidden;
+
+        }
+
+
+
+        .card-image-wrapper img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.6s ease;
+
+        }
+
+
+
+        .service-card:hover .card-image-wrapper img {
+
+            transform: scale(1.1);
+
+        }
+
+
+
+        .card-badge {
+
+            position: absolute;
+
+            top: 15px;
+
+            right: 15px;
+
+            background: var(--accent-color);
+
+            color: #333;
+
+            padding: 5px 12px;
+
+            font-size: 0.75rem;
+
+            font-weight: bold;
+
+            border-radius: 20px;
+
+            text-transform: uppercase;
+
+            z-index: 2;
+
+        }
+
+
+
+        .card-body {
+
+            padding: 30px 25px;
+
+            text-align: center;
+
+            flex-grow: 1;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-start;
+
+        }
+
+
+
+        .card-body h3 {
+
+            margin-bottom: 10px;
+
+            font-size: 1.4rem;
+
+            color: var(--primary-dark);
+
+        }
+
+
+
+        .price {
+
+            display: block;
+
+            margin-bottom: 20px;
+
+            font-size: 1.2rem;
+
+            font-weight: 700;
+
+            color: var(--primary-color);
+
+            padding-bottom: 15px;
+
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+
+        }
+
+
+
+        .card-body p {
+
+            color: var(--text-light);
+
+            font-size: 0.95rem;
+
+            line-height: 1.8;
+
+            flex-grow: 1;
+
+        }
+
+
+
+        /* --- FEATURES --- */
+
+        #features {
+
+            background-color: var(--primary-color);
+
+            color: white;
+
+        }
+
+
+
+        #features .section-title h2 {
+
+            color: white;
+
+        }
+
+        
+
+        #features .section-title p {
+
+            color: #ffffff; 
+
+        }
+
+
+
+        #features .section-title::after {
+
+            background-color: var(--accent-color);
+
+        }
+
+
+
+        .features-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 30px;
+
+            text-align: left;
+
+        }
+
+
+
+        .feature-item {
+
+            background: rgba(255,255,255,0.15);
+
+            padding: 30px;
+
+            border-radius: var(--radius);
+
+        }
+
+
+
+        .feature-item i {
+
+            font-size: 2rem;
+
+            color: var(--accent-color);
+
+            margin-bottom: 15px;
+
+        }
+
+
+
+        .feature-item h3 {
+
+            color: white;
+
+            margin-bottom: 10px;
+
+            font-family: 'Lato', sans-serif;
+
+            font-size: 1.2rem;
+
+        }
+
+
+
+        .feature-item p {
+
+            color: rgba(255,255,255,0.9);
+
+            font-size: 0.9rem;
+
+        }
+
+
+
+        /* --- GALLERY SECTION --- */
+
+        #gallery {
+
+            background-color: var(--bg-white);
+
+            padding-bottom: 60px;
+
+        }
+
+
+
+        .gallery-slider-wrapper {
+
+            position: relative;
+
+            max-width: 900px;
+
+            margin: 0 auto;
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow-hover);
+
+            overflow: hidden;
+
+            background: #000;
+
+        }
+
+
+
+        .gallery-track {
+
+            display: flex;
+
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+
+        }
+
+
+
+        .gallery-slide {
+
+            min-width: 100%;
+
+            position: relative;
+
+        }
+
+
+
+        .gallery-slide img {
+
+            width: 100%;
+
+            height: 500px;
+
+            object-fit: cover;
+
+            display: block;
+
+            opacity: 0.9;
+
+        }
+
+
+
+        .gallery-btn {
+
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            background-color: rgba(255, 255, 255, 0.8);
+
+            color: var(--primary-dark);
+
+            border: none;
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: 0.3s;
+
+            font-size: 1.2rem;
+
+        }
+
+
+
+        .gallery-btn:hover {
+
+            background-color: var(--accent-color);
+
+            color: white;
+
+        }
+
+
+
+        .g-prev-btn { left: 20px; }
+
+        .g-next-btn { right: 20px; }
+
+
+
+        .gallery-dots {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 25px;
+
+        }
+
+
+
+        .g-dot {
+
+            width: 12px;
+
+            height: 12px;
+
+            background-color: #ddd;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
+        }
+
+
+
+        .g-dot.active {
+
+            background-color: var(--primary-color);
+
+            transform: scale(1.3);
+
+        }
+
+
+
+        /* --- TESTIMONIALS --- */
+
+        #testimonials {
+
+            background-color: var(--bg-light);
+
+            overflow: hidden;
+
+        }
+
+
+
+        .slider-container {
+
+            position: relative;
+
+            max-width: 800px;
+
+            margin: 0 auto;
+
+            padding: 20px;
+
+        }
+
+
+
+        .slider-wrapper {
+
+            overflow: hidden;
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow);
+
+            background: var(--bg-white);
+
+        }
+
+
+
+        .slider-track {
+
+            display: flex;
+
+            transition: transform 0.5s ease-in-out;
+
+        }
+
+
+
+        .slide {
+
+            min-width: 100%;
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+
+        .quote-icon {
+
+            font-size: 3rem;
+
+            color: rgba(232, 93, 117, 0.1); 
+
+            margin-bottom: 10px;
+
+        }
+
+
+
+        .testimonial-text {
+
+            font-style: italic;
+
+            font-size: 1.1rem;
+
+            color: var(--text-dark);
+
+            margin-bottom: 20px;
+
+            line-height: 1.8;
+
+        }
+
+
+
+        .client-info h4 {
+
+            font-size: 1.1rem;
+
+            font-family: 'Lato', sans-serif;
+
+            font-weight: 700;
+
+            color: var(--primary-dark);
+
+        }
+
+
+
+        .stars {
+
+            color: var(--accent-color);
+
+            font-size: 0.9rem;
+
+            margin-top: 5px;
+
+        }
+
+
+
+        .slider-btn {
+
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            background-color: var(--primary-color);
+
+            color: white;
+
+            border: none;
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            z-index: 10;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: 0.3s;
+
+        }
+
+
+
+        .slider-btn:hover {
+
+            background-color: var(--accent-color);
+
+        }
+
+
+
+        .prev-btn { left: -10px; }
+
+        .next-btn { right: -10px; }
+
+
+
+        .slider-dots {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-top: 20px;
+
+        }
+
+
+
+        .dot {
+
+            width: 12px;
+
+            height: 12px;
+
+            background-color: #ccc;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+
+        .dot.active {
+
+            background-color: var(--primary-color);
+
+            transform: scale(1.2);
+
+        }
+
+
+
+        /* --- LOCATION --- */
+
+        #location {
+
+            background-color: var(--bg-light);
+
+        }
+
+
+
+        .location-content {
+
+            display: grid;
+
+            grid-template-columns: 1.5fr 1fr;
+
+            gap: 40px;
+
+            align-items: start;
+
+        }
+
+
+
+        .map-wrapper {
+
+            width: 100%;
+
+            border-radius: var(--radius);
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow);
+
+            border: 5px solid white;
+
+            height: 400px; 
+
+        }
+
+
+
+        .map-wrapper iframe {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+            border: none;
+
+        }
+
+
+
+        .info-card {
+
+            background-color: var(--bg-white);
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow);
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+            height: 400px;
+
+        }
+
+
+
+        .info-img {
+
+            height: 150px;
+
+            width: 100%;
+
+            object-fit: cover;
+
+        }
+
+
+
+        .info-body {
+
+            padding: 25px;
+
+            flex-grow: 1;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+        }
+
+
+
+        .info-item {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            margin-bottom: 15px;
+
+            color: var(--text-dark);
+
+        }
+
+
+
+        .info-item i {
+
+            width: 30px;
+
+            color: var(--primary-color);
+
+            font-size: 1.1rem;
+
+            text-align: center;
+
+            margin-right: 10px;
+
+            margin-top: 3px;
+
+        }
+
+
+
+        .info-item strong {
+
+            display: block;
+
+            font-family: 'Playfair Display', serif;
+
+            color: var(--primary-dark);
+
+            font-size: 0.9rem;
+
+        }
+
+
+
+        .info-item span {
+
+            font-size: 0.95rem;
+
+            color: var(--text-light);
+
+        }
+
+
+
+        .location-cta {
+
+            margin-top: auto;
+
+            text-align: center;
+
+        }
+
+
+
+        /* --- BOOKING & PROCEDURE SECTION --- */
+
+        #booking {
+
+            background-color: var(--primary-color);
+
+            color: white;
+
+        }
+
+
+
+        .booking-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1.2fr; 
+
+            gap: 50px;
+
+            align-items: center;
+
+        }
+
+
+
+        .booking-info {
+
+            color: white;
+
+        }
+
+
+
+        .booking-info h2 {
+
+            font-size: 2.8rem;
+
+            margin-bottom: 20px;
+
+            color: white;
+
+            line-height: 1.2;
+
+        }
+
+
+
+        .booking-info p {
+
+            font-size: 1.2rem;
+
+            color: rgba(255,255,255,0.9);
+
+            line-height: 1.6;
+
+        }
+
+
+
+        .booking-form-wrapper {
+
+            background: white;
+
+            color: var(--text-dark);
+
+            max-width: 100%;
+
+            padding: 40px;
+
+            border-radius: var(--radius);
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+        }
+
+
+
+        .booking-form-wrapper h3 {
+
+            margin-bottom: 20px;
+
+            font-size: 1.5rem;
+
+            color: var(--primary-color);
+
+            text-align: center;
+
+        }
+
+
+
+        .form-group {
+
+            margin-bottom: 1px;
+
+        }
+
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-weight: 700;
+
+            color: var(--primary-dark);
+
+        }
+
+
+
+        .form-control {
+
+            width: 100%;
+
+            padding: 12px 15px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 6px;
+
+            font-size: 1rem;
+
+            font-family: 'Lato', sans-serif;
+
+            transition: border 0.3s;
+
+        }
+
+
+
+        .form-control:focus {
+
+            outline: none;
+
+            border-color: var(--primary-color);
+
+            box-shadow: 0 0 0 3px rgba(232, 93, 117, 0.1);
+
+        }
+
+
+
+        /* --- FOOTER & MODAL STYLES (UPDATED 4 COLUMNS) --- */
+
+        footer {
+
+            background-color: #2C2C2C;
+
+            color: white;
+
+            padding-top: 60px;
+
+        }
+
+
+
+        /* Grid Layout Update */
+
+        .footer-grid {
+
+            display: grid;
+
+            /* Reduced minmax from 250px to 220px to fit 4 cols on desktop/tablet */
+
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 30px; 
+
+            margin-bottom: 40px;
+
+        }
+
+
+
+        .footer-col h3 {
+
+            color: white;
+
+            margin-bottom: 15px;
+
+            font-size: 1.1rem; /* Reduced from 1.4rem */
+
+        }
+
+
+
+        /* Text Size Reduction */
+
+        .footer-col p, .footer-col a {
+
+            color: #ccc;
+
+            margin-bottom: 8px; /* Reduced from 10px */
+
+            display: block;
+
+            font-size: 0.85rem; /* Reduced from 0.95rem */
+
+            line-height: 1.5;
+
+        }
+
+        
+
+        .footer-col a:hover {
+
+            color: var(--accent-color);
+
+        }
+
+
+
+        .social-links {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 15px;
+
+        }
+
+
+
+        .social-links a {
+
+            width: 35px; /* Slightly smaller */
+
+            height: 35px;
+
+            background: rgba(255,255,255,0.1);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            transition: 0.3s;
+
+        }
+
+
+
+        .social-links a:hover {
+
+            background: var(--primary-color);
+
+            color: white;
+
+        }
+
+
+
+        /* --- PAYMENT INFO SECTION (Column 4) --- */
+
+        .payment-section {
+
+            /* Border removed since it's now its own column, adds visual clutter */
+
+            margin-top: 0;
+
+        }
+
+
+
+        .payment-title {
+
+            font-size: 0.8rem; /* Reduced from 1rem */
+
+            font-weight: 700;
+
+            margin-bottom: 12px;
+
+            color: #ffffff;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+        }
+
+
+
+        .bank-row {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 8px; /* Reduced from 10px */
+
+            background: rgba(255,255,255,0.05);
+
+            padding: 6px 10px; /* Reduced from 8px 12px */
+
+            border-radius: 6px;
+
+            transition: 0.3s;
+
+        }
+
+
+
+        .bank-row:hover {
+
+            background: rgba(255,255,255,0.1);
+
+        }
+
+
+
+        .bank-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+
+        .bank-icon {
+
+            font-size: 1rem; /* Reduced from 1.2rem */
+
+            color: white;
+
+            width: 20px;
+
+            text-align: center;
+
+        }
+
+
+
+        .bank-name {
+
+            font-weight: bold;
+
+            font-size: 0.8rem; /* Reduced from 0.9rem */
+
+            color: #ffffff;
+
+        }
+
+
+
+        .account-number {
+
+            font-family: 'Courier New', monospace;
+
+            font-size: 0.75rem; /* Reduced from 0.85rem */
+
+            color: #ffffff;
+
+            cursor: pointer;
+
+            padding: 3px 6px; /* Reduced padding */
+
+            border-radius: 4px;
+
+            background: rgba(0,0,0,0.2);
+
+            transition: 0.3s;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+        }
+
+
+
+        .account-number:hover {
+
+            color: var(--accent-color);
+
+            background: rgba(232, 93, 117, 0.2);
+
+        }
+
+
+
+        .account-number i {
+
+            font-size: 0.6rem;
+
+            opacity: 0.7;
+
+        }
+
+
+
+        .qris-trigger {
+
+            margin-top: 10px;
+
+            font-size: 0.8rem; /* Reduced from 0.9rem */
+
+            color: #ffffff;
+
+            cursor: pointer;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            transition: 0.3s;
+
+        }
+
+
+
+        .qris-trigger:hover {
+
+            color: var(--accent-color);
+
+            text-decoration: underline;
+
+        }
+
+
+
+        /* --- QRIS MODAL --- */
+
+        .qris-modal {
+
+            display: none; 
+
+            position: fixed;
+
+            z-index: 2000;
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            overflow: auto;
+
+            background-color: rgba(0,0,0,0.8);
+
+            backdrop-filter: blur(5px);
+
+            align-items: center;
+
+            justify-content: center;
+
+            animation: fadeIn 0.3s ease;
+
+        }
+
+
+
+        .qris-content {
+
+            background-color: #fefefe;
+
+            padding: 30px;
+
+            border-radius: var(--radius);
+
+            width: 90%;
+
+            max-width: 350px;
+
+            text-align: center;
+
+            position: relative;
+
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+
+            animation: slideUp 0.4s ease;
+
+        }
+
+
+
+        .qris-content img {
+
+            width: 200px;
+
+            height: 200px;
+
+            margin: 0 auto 15px;
+
+            border: 2px solid var(--primary-color);
+
+            border-radius: 8px;
+
+            padding: 5px;
+
+            background: white;
+
+        }
+
+
+
+        .qris-content h4 {
+
+            font-family: 'Lato', sans-serif;
+
+            font-size: 1.2rem;
+
+            color: var(--primary-dark);
+
+            margin-bottom: 5px;
+
+        }
+
+
+
+        .qris-content p {
+
+            font-size: 0.9rem;
+
+            color: #666;
+
+        }
+
+
+
+        .close-qris {
+
+            position: absolute;
+
+            top: 10px;
+
+            right: 15px;
+
+            color: #aaa;
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+
+        .close-qris:hover {
+
+            color: var(--primary-color);
+
+        }
+
+
+
+        @keyframes fadeIn {
+
+            from {opacity: 0;}
+
+            to {opacity: 1;}
+
+        }
+
+
+
+        @keyframes slideUp {
+
+            from {transform: translateY(50px); opacity: 0;}
+
+            to {transform: translateY(0); opacity: 1;}
+
+        }
+
+
+
+        .copyright {
+
+            background-color: #1a1a1a;
+
+            text-align: center;
+
+            padding: 20px;
+
+            color: #888;
+
+            font-size: 0.85rem;
+
+        }
+
+
+
+        /* --- WA FLOATING --- */
+
+        @keyframes goyang-wa {
+
+            0% { transform: rotate(0deg); }
+
+            15% { transform: rotate(-20deg); }
+
+            30% { transform: rotate(20deg); }
+
+            45% { transform: rotate(-20deg); }
+
+            60% { transform: rotate(20deg); }
+
+            75% { transform: rotate(0deg); }
+
+            100% { transform: rotate(0deg); }
+
+        }
+
+
+
+        .wa-float {
+
+            position: fixed;
+
+            bottom: 30px;
+
+            right: 30px;
+
+            background-color: #25D366;
+
+            color: white;
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 30px;
+
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+            z-index: 1001;
+
+            animation: goyang-wa 2.5s infinite ease-in-out;
+
+        }
+
+
+
+        .wa-float:hover {
+
+            background-color: #20BA5C;
+
+        }
+
+
+
+        /* --- RESPONSIVE --- */
+
+        @media (max-width: 900px) {
+
+            .location-content {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .map-wrapper, .info-card {
+
+                height: 350px;
+
+            }
+
+            .booking-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .booking-info {
+
+                text-align: center;
+
+                margin-bottom: 30px;
+
+            }
+
+        }
+
+
+
+        @media (max-width: 768px) {
+
+            .mobile-menu-btn {
+
+                display: block;
+
+            }
+
+
+
+            .nav-links {
+
+                position: absolute;
+
+                top: 100%;
+
+                left: 0;
+
+                width: 100%;
+
+                background-color: var(--bg-white);
+
+                flex-direction: column;
+
+                align-items: center;
+
+                padding: 20px 0;
+
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+
+                clip-path: circle(0% at 100% 0);
+
+                transition: 0.5s ease-in-out;
+
+            }
+
+
+
+            .nav-links.active {
+
+                clip-path: circle(150% at 100% 0);
+
+            }
+
+
+
+            .hero-content h1 {
+
+                font-size: 2.5rem;
+
+            }
+
+
+
+            .about-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            
+
+            .about-img {
+
+                order: -1;
+
+            }
+
+
+
+            .slider-btn {
+
+                width: 35px;
+
+                height: 35px;
+
+            }
+
+            
+
+            .prev-btn { left: -15px; }
+
+            .next-btn { right: -15px; }
+
+            
+
+            /* Mobile Payment Adjustments */
+
+            .bank-row {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 5px;
+
+            }
+
+            .account-number {
+
+                width: 100%;
+
+                justify-content: center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <!-- Header / Navigation -->
+
+    <header>
+
+        <div class="container">
+
+            <nav>
+
+                <div class="logo">
+
+                    <img src="https://z-cdn-media.chatglm.cn/files/c232cdea-9649-43fb-86a9-57d0825ad637.png?auth_key=1867126908-29f0073e744e4aa4925500c3c72ffadf-0-2fffe6775687759fef9d56b460d13183" alt="Logo DF Homespa" class="logo-img">
+
+                    <span>DF Homespa</span>
+
+                </div>
+
+                <div class="nav-links" id="navLinks">
+
+                    <a href="#hero" onclick="toggleMenu()">Beranda</a>
+
+                    <a href="#about" onclick="toggleMenu()">Tentang Kami</a>
+
+                    <a href="#services" onclick="toggleMenu()">Layanan</a>
+
+                    <a href="#booking" onclick="toggleMenu()">Cara Pesan</a>
+
+                    <a href="#testimonials" onclick="toggleMenu()">Testimoni</a>
+
+                    <a href="#location" onclick="toggleMenu()">Lokasi</a>
+
+                    <a href="#booking" onclick="toggleMenu()" class="btn btn-primary" style="padding: 8px 20px; margin-left: 10px;">Reservasi</a>
+
+                </div>
+
+                <div class="mobile-menu-btn" onclick="toggleMenu()">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+        <!-- Hero Section -->
+
+        <section id="hero">
+
+            <div class="container hero-content">
+
+                <h1>Perawatan Dan Kecantikan<br>Favorit Para Wanita Cantik</h1>
+
+                <p>Layanan spa profesional & terpercaya langsung ke lokasi Anda. Nikmati perawatan tubuh premium tanpa harus keluar rumah.</p>
+
+                <a href="#booking" class="btn btn-primary">
+
+                    <i class="fa-brands fa-whatsapp"></i> Pesan Sekarang
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- About Section -->
+
+        <section id="about" class="section-padding">
+
+            <div class="container">
+
+                <div class="about-grid">
+
+                    <div class="about-img">
+
+                        <img src="https://picsum.photos/seed/spa_therapist/600/400" alt="Terapis DF Homespa">
+
+                    </div>
+
+                    <div class="about-text">
+
+                        <h4>Tentang DF Homespa</h4>
+
+                        <h3>Mitra Kesehatan & Kecantikan Keluarga Anda</h3>
+
+                        <p>DF Homespa adalah penyedia layanan pijat dan spa panggilan yang berdedikasi menghadirkan ketenangan dan kesehatan bagi keluarga Anda. Kami memahami kesibukan Anda, oleh karena itu kami membawa spa mewah ke ruang tamu atau kamar tidur Anda.</p>
+
+                        <p>Setiap terapis kami telah melewati seleksi ketat, pelatihan profesional, dan sertifikasi kesehatan rutin. Kami memastikan privasi, kebersihan, dan kenyamanan Anda adalah prioritas utama.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Services Section -->
+
+        <section id="services" class="section-padding">
+
+            <div class="container">
+
+                <div class="section-title text-center">
+
+                    <h2>Daftar Layanan Kami</h2>
+
+                    <p>Paket Treatment Pilihan Sesuai Kebuhutan Anda</p>
+
+                </div>
+
+                
+
+                <div class="services-grid">
+
+                    <!-- Service 1: Paket Special -->
+
+                    <article class="service-card">
+
+                        <div class="card-image-wrapper">
+
+                            <span class="card-badge">Best Seller</span>
+
+                            <img src="https://z-cdn-media.chatglm.cn/files/90cc8468-b95d-41df-b882-ac441f48b0e6.png?auth_key=1867119238-24bc3e939dfd45c3bdf47071c21bf5f6-0-42fa817ffa2ec14fd1087b633330e435" alt="Full Body Massage">
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <h3>Paket Special</h3>
+
+                            <p>Massage body untuk relaksasi otot dan melancarkan peredaran darah. Tersedia teknik pada titik tertentu, dan Tradisional.</p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- Service 2: Paket Cantik -->
+
+                    <article class="service-card">
+
+                        <div class="card-image-wrapper">
+
+                            <span class="card-badge">Spesial</span>
+
+                            <img src="https://lh3.googleusercontent.com/u/0/d/1HtncS9N3ax4vIbBsOPqo3tOKMXKmnrav" alt="Menaikkan Rahim">
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <h3>Paket Cantik</h3>
+
+                            <p>Terapi khusus untuk kesehatan organ kewanitaan, membantu memulihkan pasca melahirkan, dan menjaga kebugaran.</p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- Service 3: Paket Aura -->
+
+                    <article class="service-card">
+
+                        <div class="card-image-wrapper">
+
+                            <img src="https://lh3.googleusercontent.com/u/0/d/1dePowoCoMF5z5MBzAmwmLuMI1AomI6aF" alt="Buka Aura Wajah">
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <h3>Paket Aura</h3>
+
+                            <p>Perawatan wajah mendalam untuk mencerahkan, mengencangkan kulit, serta merawat aura wajah agar tampak segar dan bersinar.</p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- Service 4: Paket Aura Cantik -->
+
+                    <article class="service-card">
+
+                        <div class="card-image-wrapper">
+
+                            <img src="https://lh3.googleusercontent.com/u/0/d/1XD-clgcGhSk57VjX4gRtS-9HgTXlIcX0" alt="Lulur & Scrub">
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <h3>Paket Aura Cantik</h3>
+
+                            <p>Membersihkan sel kulit mati, mencerahkan, dan menghaluskan kulit. Pilihan bahan: Susu, Green Tea, dan Whitening.</p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- Service 5: Paket Bertiga -->
+
+                    <article class="service-card">
+
+                        <div class="card-image-wrapper">
+
+                            <img src="https://lh3.googleusercontent.com/u/0/d/1irNYS9b9DPdfoxTGRZy_q6sPGDjCu3lG" alt="Refleksi">
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <h3>Paket Bertiga</h3>
+
+                            <p>Terapi titik syaraf pada telapak kaki untuk mengatasi kelelahan, pegal linu, dan mengembalikan stamina tubuh.</p>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- Service 6: Paket Datang Langsung -->
+
+                    <article class="service-card">
+
+                        <div class="card-image-wrapper">
+
+                            <img src="https://lh3.googleusercontent.com/u/0/d/10z8SurPkO4rCwpsyz_ZKVNoZNnXnjxUN" alt="Back Alignment Therapy">
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <h3>Paket Datang Langsung</h3>
+
+                            <p>Pijat lembut khusus untuk Massage Body agar tidur nyenyak, meningkatkan kebugaran, dan meredakan kolik.</p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Features / Why Us -->
+
+        <section id="features" class="section-padding">
+
+            <div class="container">
+
+                <div class="section-title text-center">
+
+                    <h2>Mengapa DF Homespa?</h2>
+
+                    <p>Komitmen kami untuk memberikan pelayanan terbaik</p>
+
+                </div>
+
+                <div class="features-grid">
+
+                    <div class="feature-item">
+
+                        <i class="fa-solid fa-user-check"></i>
+
+                        <h3>Terapis Tersertifikasi</h3>
+
+                        <p>Tim terapis kami berpengalaman, ramah, dan telah melewati training khusus home spa.</p>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <i class="fa-solid fa-pump-soap"></i>
+
+                        <h3>Standar Higienis</h3>
+
+                        <p>Menggunakan handuk bersih (laundered), sarung tangan, dan alat pribadi untuk setiap klien.</p>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        <h3>Respon Cepat</h3>
+
+                        <p>Booking mudah via WhatsApp, admin fast respon, dan terapis datang tepat waktu.</p>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <i class="fa-solid fa-tags"></i>
+
+                        <h3>Harga Terjangkau</h3>
+
+                        <p>Nikmati layanan spa kualitas premium dengan harga yang bersahabat dan transparan.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Gallery Section (Single Image Slider) -->
+
+        <section id="gallery" class="section-padding">
+
+            <div class="container">
+
+                <div class="section-title text-center">
+
+                    <h2>Galeri Aktivitas</h2>
+
+                    <p>Dokumentasi kepuasan pelanggan kami</p>
+
+                </div>
+
+                
+
+                <div class="gallery-slider-wrapper">
+
+                    <button class="gallery-btn g-prev-btn"><i class="fas fa-chevron-left"></i></button>
+
+                    <button class="gallery-btn g-next-btn"><i class="fas fa-chevron-right"></i></button>
+
+                    
+
+                    <div class="gallery-track" id="galleryTrack">
+
+                        <!-- Slide 1 -->
+
+                        <div class="gallery-slide">
+
+                            <img src="https://picsum.photos/seed/spa_oil/800/500" alt="Minyak Aromaterapi">
+
+                        </div>
+
+                        <!-- Slide 2 -->
+
+                        <div class="gallery-slide">
+
+                            <img src="https://picsum.photos/seed/towel/800/500" alt="Handuk Bersih">
+
+                        </div>
+
+                        <!-- Slide 3 -->
+
+                        <div class="gallery-slide">
+
+                            <img src="https://picsum.photos/seed/candles/800/500" alt="Suasana Santai">
+
+                        </div>
+
+                        <!-- Slide 4 -->
+
+                        <div class="gallery-slide">
+
+                            <img src="https://picsum.photos/seed/stones/800/500" alt="Batu Terapi">
+
+                        </div>
+
+                        <!-- Slide 5 -->
+
+                        <div class="gallery-slide">
+
+                            <img src="https://picsum.photos/seed/flower_bath/800/500" alt="Flower Bath">
+
+                        </div>
+
+                        <!-- Slide 6 -->
+
+                        <div class="gallery-slide">
+
+                            <img src="https://picsum.photos/seed/massage_tools/800/500" alt="Peralatan Pijat">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="gallery-dots" id="galleryDots"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Testimonials Slider Section -->
+
+        <section id="testimonials" class="section-padding">
+
+            <div class="container">
+
+                <div class="section-title text-center">
+
+                    <h2>Kata Pelanggan</h2>
+
+                    <p>Apa kata mereka yang telah mencoba layanan DF Homespa</p>
+
+                </div>
+
+
+
+                <div class="slider-container">
+
+                    <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+
+                    
+
+                    <div class="slider-wrapper">
+
+                        <div class="slider-track" id="sliderTrack">
+
+                            <!-- Slide 1 -->
+
+                            <div class="slide">
+
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+
+                                <p class="testimonial-text">"Pelayanan sangat memuaskan! Terapis datang tepat waktu, membawa perlengkapan lengkap termasuk matras dan alas. Badan jadi enteng banget."</p>
+
+                                <div class="client-info">
+
+                                    <h4>Siti Aminah</h4>
+
+                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Slide 2 -->
+
+                            <div class="slide">
+
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+
+                                <p class="testimonial-text">"Suka banget sama lulur susunya, wangi dan bikin kulit halus. Sangat recommended buat yang capek kerja dan gak mau keluar rumah."</p>
+
+                                <div class="client-info">
+
+                                    <h4>Amalia</h4>
+
+                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Slide 3 -->
+
+                            <div class="slide">
+
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+
+                                <p class="testimonial-text">"Pijat Rahimnya ampuh banget buat saya pasca lahiran. Terapisnya juga sabar dan paham betul tekniknya."</p>
+
+                                <div class="client-info">
+
+                                    <h4>Rina Mariani</h4>
+
+                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Slide 4 -->
+
+                            <div class="slide">
+
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+
+                                <p class="testimonial-text">"Buka Aura Wajah-nya bikin muka jadi glowing dan cerah. Jadi pede keluar rumah tanpa makeup tebal."</p>
+
+                                <div class="client-info">
+
+                                    <h4>Diana Putri</h4>
+
+                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Slide 5 -->
+
+                            <div class="slide">
+
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+
+                                <p class="testimonial-text">"Awalnya ragu, tapi setelah coba langsung jatuh cinta! Terapisnya sangat sopan dan profesional."</p>
+
+                                <div class="client-info">
+
+                                    <h4>Ibu Dira</h4>
+
+                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Slide 6 -->
+
+                            <div class="slide">
+
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+
+                                <p class="testimonial-text">"Bookingnya gampang banget via WA. Respon cepat dan harga terjangkau untuk pelayanan sekelas hotel."</p>
+
+                                <div class="client-info">
+
+                                    <h4>Maya Sari</h4>
+
+                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+
+                    
+
+                    <!-- Dots Navigation -->
+
+                    <div class="slider-dots" id="sliderDots"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Location Section -->
+
+        <section id="location" class="section-padding">
+
+            <div class="container">
+
+                <div class="section-title text-center">
+
+                    <h2>Lokasi & Kontak</h2>
+
+                    <p>Kami siap melayani area Makassar, Gowa, Maros dan sekitarnya</p>
+
+                </div>
+
+                
+
+                <div class="location-content">
+
+                    <!-- Kolom 1: Peta -->
+
+                    <div class="map-wrapper">
+
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.6499847271125!2d119.44446257434913!3d-5.159890652127798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbf1d760bd3e78d%3A0xee6220b7dd5bee37!2sDfSpa%20Hawai%20Inn!5e0!3m2!1sen!2sid!4v1767117178628!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    </div>
+
+
+
+                    <!-- Kolom 2: Kartu Info -->
+
+                    <div class="info-card">
+
+                        <img src="https://picsum.photos/seed/spa_lobby/600/300" alt="Suasana DF Homespa" class="info-img">
+
+                        <div class="info-body">
+
+                            <div class="info-item">
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                <div>
+
+                                    <strong>Alamat Kantor</strong>
+
+                                    <span>Jl. Adiyaksa, Kota Makassar</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="info-item">
+
+                                <i class="fa-regular fa-clock"></i>
+
+                                <div>
+
+                                    <strong>Jam Operasional</strong>
+
+                                    <span>Setiap Hari: 09.00 - 22.00 WIB</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="location-cta">
+
+                                <a href="https://www.google.com/maps/dir//DfSpa+Hawai+Inn,+Jl.+Adiyaksa,+Masale,+Panakkukang,+Makassar+City,+South+Sulawesi+90132/@-5.1598957,119.4285834,15z/data=!4m16!1m7!3m6!1s0x2dbf1d760bd3e78d:0xee6220b7dd5bee37!2sDfSpa+Hawai+Inn!8m2!3d-5.159896!4d119.4470375!16s%2Fg%2F11fr32zsnz!4m7!1m0!1m5!1m1!1s0x2dbf1d760bd3e78d:0xee6220b7dd5bee37!2m2!1d119.4470375!2d-5.159896?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-primary" style="font-size: 0.8rem; padding: 5px 20px;">
+
+                                    <i class="fa-solid fa-diamond-turn-right"></i> Petunjuk Arah
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- MERGED SECTION: Booking & Procedure -->
+
+        <section id="booking" class="section-padding">
+
+            <div class="container">
+
+                <div class="booking-grid">
+
+                    <!-- Left Side: Text Content -->
+
+                    <div class="booking-info">
+
+                        <h2>Cara Pemesanan</h2>
+
+                        <p>Mudah dan simpel, cukup dari genggaman tangan Anda</p>
+
+                    </div>
+
+                    
+
+                    <!-- Right Side: Booking Form -->
+
+                    <div class="booking-form-wrapper">
+
+                        <h3>Form Reservasi</h3>
+
+                        <form id="whatsappForm" onsubmit="kirimWhatsApp(event)">
+
+                            <div class="form-group">
+
+                                <label for="nama">Nama Lengkap</label>
+
+                                <input type="text" id="nama" class="form-control" placeholder="Masukkan nama Anda" required>
+
+                            </div>
+
+                            
+
+                            <div class="form-group">
+
+                                <label for="alamat">Alamat Lengkap</label>
+
+                                <textarea id="alamat" class="form-control" rows="3" placeholder="Alamat lengkap untuk kedatangan terapis" required></textarea>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <label for="layanan">Jenis Layanan</label>
+
+                                <select id="layanan" class="form-control" required>
+
+                                    <option value="" disabled selected>Pilih Layanan...</option>
+
+                                    <option value="Paket Special">Paket Special</option>
+
+                                    <option value="Paket Cantik">Paket Cantik</option>
+
+                                    <option value="Paket Aura">Paket Aura</option>
+
+                                    <option value="Paket Aura Cantik">Paket Aura Cantik</option>
+
+                                    <option value="Paket Bertiga">Paket Bertiga</option>
+
+                                    <option value="Paket Datang Langsung">Paket Datang Langsung</option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <label for="tanggal">Tanggal Pemesanan</label>
+
+                                <input type="date" id="tanggal" class="form-control" required>
+
+                            </div>
+
+
+
+                            <div class="form-group">
+
+                                <label for="jam">Jam Layanan</label>
+
+                                <input type="time" id="jam" class="form-control" required>
+
+                            </div>
+
+
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+
+                                <i class="fa-brands fa-whatsapp"></i> Ajukan Reservasi
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+
+
+    <!-- Footer (Updated 4 Columns) -->
+
+    <footer id="contact">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <!-- Column 1 -->
+
+                <div class="footer-col">
+
+                    <div class="logo" style="margin-bottom: 15px;">
+
+                        <img src="https://z-cdn-media.chatglm.cn/files/c232cdea-9649-43fb-86a9-57d0825ad637.png?auth_key=1867126908-29f0073e744e4aa4925500c3c72ffadf-0-2fffe6775687759fef9d56b460d13183" alt="Logo DF Homespa" class="logo-img">
+
+                        <span>DF Homespa</span>
+
+                    </div>
+
+                    <p>Layanan spa dan pijat panggilan profesional terpercaya untuk kesehatan dan kecantikan keluarga Anda. Kenyamanan rumah Anda adalah prioritas kami.</p>
+
+                </div>
+
+                
+
+                <!-- Column 2 -->
+
+                <div class="footer-col">
+
+                    <h3>Layanan Populer</h3>
+
+                    <a href="#services">Full Body Massage</a>
+
+                    <a href="#services">Pijat Menaikkan Rahim</a>
+
+                    <a href="#services">Buka Aura Wajah</a>
+
+                    <a href="#services">Totok Miss V</a>
+
+                    <a href="#services">Ratus Miss V</a>
+
+                </div>
+
+                
+
+                <!-- Column 3: Kontak & Sosial -->
+
+                <div class="footer-col">
+
+                    <h3>Kontak & Sosial</h3>
+
+                    <p><i class="fa-brands fa-whatsapp"></i> 0821 9379 5693</p>
+
+                    <p><i class="fa-regular fa-envelope"></i> info@dfhomespa.com</p>
+
+                    
+
+                    <div class="social-links">
+
+                        <a href="https://instagram.com/dfhomespa" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+
+                        <a href="https://www.facebook.com/DFHomeSpaOfficial" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+
+                        <a href="https://www.tiktok.com/@df_homespa" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Column 4: Payment Info -->
+
+                <div class="footer-col">
+
+                    <h3>Info Pembayaran</h3>
+
+                    <div class="payment-section">
+
+                        <!-- Bank BCA -->
+
+                        <div class="bank-row">
+
+                            <div class="bank-left">
+
+                                <i class="fa-solid fa-building-columns bank-icon"></i>
+
+                                <span class="bank-name">BCA</span>
+
+                            </div>
+
+                            <div class="account-number" onclick="copyToClipboard(this, '12345678799')" title="Klik untuk menyalin">
+
+                                <span>12345678799</span>
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- Bank Mandiri -->
+
+                        <div class="bank-row">
+
+                            <div class="bank-left">
+
+                                <i class="fa-solid fa-building-columns bank-icon"></i>
+
+                                <span class="bank-name">Mandiri</span>
+
+                            </div>
+
+                            <div class="account-number" onclick="copyToClipboard(this, '12345678799')" title="Klik untuk menyalin">
+
+                                <span>12345678799</span>
+
+                                <i class="fa-regular fa-copy"></i>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- QRIS Link -->
+
+                        <div class="qris-trigger" onclick="openQRIS()">
+
+                            <i class="fa-solid fa-qrcode"></i>
+
+                            <span>Klik untuk Kode QRIS</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+
+            <p>&copy; 2025 DF Homespa. All Rights Reserved.</p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- QRIS Modal Popup -->
+
+    <div id="qrisModal" class="qris-modal">
+
+        <div class="qris-content">
+
+            <span class="close-qris" onclick="closeQRIS()">&times;</span>
+
+            <h4>Scan QRIS</h4>
+
+            <!-- Menggunakan API QR Code Generator untuk membuat QR otomatis dari nomor DANA -->
+
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=6282193795693" alt="QRIS DANA">
+
+            <p>Scan untuk pembayaran via DANA</p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Floating WhatsApp Button -->
+
+    <a href="https://wa.me/6282193795693?text=Halo%20DF%20Homespa,%20saya%20mau%20booking%20spa." class="wa-float" target="_blank" title="Chat WhatsApp">
+
+        <i class="fa-brands fa-whatsapp"></i>
+
+    </a>
+
+
+
+    <!-- Scripts -->
+
+    <script>
+
+        // --- Mobile Menu Toggle ---
+
+        function toggleMenu() {
+
+            const navLinks = document.getElementById('navLinks');
+
+            navLinks.classList.toggle('active');
+
+        }
+
+
+
+        // --- Booking Form Logic ---
+
+        function kirimWhatsApp(e) {
+
+            e.preventDefault(); // Mencegah reload halaman
+
+
+
+            // Ambil nilai dari form
+
+            const nama = document.getElementById('nama').value;
+
+            const alamat = document.getElementById('alamat').value;
+
+            const layanan = document.getElementById('layanan').value;
+
+            const tanggal = document.getElementById('tanggal').value;
+
+            const jam = document.getElementById('jam').value;
+
+
+
+            // Nomor Admin WA (Format: 628...)
+
+            const nomorAdmin = "6282193795693";
+
+
+
+            // Format Pesan
+
+            const pesan = `Halo Admin DF Homespa, saya ingin memesan layanan spa.
+
+
+
+*Nama:* ${nama}
+
+*Alamat:* ${alamat}
+
+*Jenis Layanan:* ${layanan}
+
+*Tanggal:* ${tanggal}
+
+*Jam:* ${jam}
+
+
+
+Mohon konfirmasinya. Terima kasih.`;
+
+
+
+            // Encode pesan agar aman untuk URL
+
+            const encodedPesan = encodeURIComponent(pesan);
+
+
+
+            // Buka WhatsApp
+
+            const urlWa = `https://wa.me/${nomorAdmin}?text=${encodedPesan}`;
+
+            window.open(urlWa, '_blank');
+
+        }
+
+
+
+        // --- Copy to Clipboard Function ---
+
+        function copyToClipboard(element, text) {
+
+            navigator.clipboard.writeText(text).then(() => {
+
+                const originalContent = element.innerHTML;
+
+                
+
+                // Visual feedback: Ganti ikon jadi check dan teks jadi "Tersalin"
+
+                element.innerHTML = '<i class="fa-solid fa-check"></i> <span>Tersalin!</span>';
+
+                element.style.color = '#4ade80'; // Green color
+
+                element.style.background = 'rgba(74, 222, 128, 0.2)';
+
+
+
+                // Reset setelah 2 detik
+
+                setTimeout(() => {
+
+                    element.innerHTML = originalContent;
+
+                    element.style.color = '';
+
+                    element.style.background = '';
+
+                }, 2000);
+
+            }).catch(err => {
+
+                console.error('Gagal menyalin: ', err);
+
+            });
+
+        }
+
+
+
+        // --- QRIS Modal Functions ---
+
+        function openQRIS() {
+
+            document.getElementById('qrisModal').style.display = 'flex';
+
+        }
+
+
+
+        function closeQRIS() {
+
+            document.getElementById('qrisModal').style.display = 'none';
+
+        }
+
+
+
+        // Close modal when clicking outside content
+
+        window.onclick = function(event) {
+
+            const modal = document.getElementById('qrisModal');
+
+            if (event.target == modal) {
+
+                modal.style.display = "none";
+
+            }
+
+        }
+
+
+
+        // --- Testimonial Slider Logic ---
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const track = document.getElementById('sliderTrack');
+
+            const slides = Array.from(track.children);
+
+            const nextBtn = document.querySelector('.next-btn');
+
+            const prevBtn = document.querySelector('.prev-btn');
+
+            const dotsContainer = document.getElementById('sliderDots');
+
+            
+
+            let currentIndex = 0;
+
+            let autoPlayInterval;
+
+
+
+            // Create Dots based on number of slides
+
+            slides.forEach((_, index) => {
+
+                const dot = document.createElement('div');
+
+                dot.classList.add('dot');
+
+                if (index === 0) dot.classList.add('active');
+
+                dot.addEventListener('click', () => {
+
+                    goToSlide(index);
+
+                });
+
+                dotsContainer.appendChild(dot);
+
+            });
+
+
+
+            const dots = Array.from(dotsContainer.children);
+
+
+
+            // Function to move slide
+
+            function goToSlide(index) {
+
+                currentIndex = index;
+
+                const amountToMove = -currentIndex * 100;
+
+                track.style.transform = `translateX(${amountToMove}%)`;
+
+                
+
+                // Update dots
+
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                dots[currentIndex].classList.add('active');
+
+            }
+
+
+
+            // Next Slide
+
+            nextBtn.addEventListener('click', () => {
+
+                currentIndex = (currentIndex + 1) % slides.length;
+
+                goToSlide(currentIndex);
+
+                resetAutoPlay();
+
+            });
+
+
+
+            // Previous Slide
+
+            prevBtn.addEventListener('click', () => {
+
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+
+                goToSlide(currentIndex);
+
+                resetAutoPlay();
+
+            });
+
+
+
+            // Auto Play Function
+
+            function startAutoPlay() {
+
+                autoPlayInterval = setInterval(() => {
+
+                    currentIndex = (currentIndex + 1) % slides.length;
+
+                    goToSlide(currentIndex);
+
+                }, 5000); // Ganti slide setiap 5 detik
+
+            }
+
+
+
+            function resetAutoPlay() {
+
+                clearInterval(autoPlayInterval);
+
+                startAutoPlay();
+
+            }
+
+
+
+            // Start auto-play on load
+
+            startAutoPlay();
+
+
+
+            // --- GALLERY SLIDER LOGIC ---
+
+            const gTrack = document.getElementById('galleryTrack');
+
+            const gSlides = Array.from(gTrack.children);
+
+            const gNextBtn = document.querySelector('.g-next-btn');
+
+            const gPrevBtn = document.querySelector('.g-prev-btn');
+
+            const gDotsContainer = document.getElementById('galleryDots');
+
+
+
+            let gCurrentIndex = 0;
+
+            let gAutoPlayInterval;
+
+
+
+            // Create Gallery Dots
+
+            gSlides.forEach((_, index) => {
+
+                const dot = document.createElement('div');
+
+                dot.classList.add('g-dot');
+
+                if (index === 0) dot.classList.add('active');
+
+                dot.addEventListener('click', () => {
+
+                    goToGallerySlide(index);
+
+                });
+
+                gDotsContainer.appendChild(dot);
+
+            });
+
+
+
+            const gDots = Array.from(gDotsContainer.children);
+
+
+
+            // Function to move gallery slide
+
+            function goToGallerySlide(index) {
+
+                gCurrentIndex = index;
+
+                const amountToMove = -gCurrentIndex * 100;
+
+                gTrack.style.transform = `translateX(${amountToMove}%)`;
+
+                
+
+                // Update dots
+
+                gDots.forEach(dot => dot.classList.remove('active'));
+
+                gDots[gCurrentIndex].classList.add('active');
+
+            }
+
+
+
+            // Next Slide Gallery
+
+            gNextBtn.addEventListener('click', () => {
+
+                gCurrentIndex = (gCurrentIndex + 1) % gSlides.length;
+
+                goToGallerySlide(gCurrentIndex);
+
+                resetGalleryAutoPlay();
+
+            });
+
+
+
+            // Previous Slide Gallery
+
+            gPrevBtn.addEventListener('click', () => {
+
+                gCurrentIndex = (gCurrentIndex - 1 + gSlides.length) % gSlides.length;
+
+                goToGallerySlide(gCurrentIndex);
+
+                resetGalleryAutoPlay();
+
+            });
+
+
+
+            // Auto Play Function Gallery
+
+            function startGalleryAutoPlay() {
+
+                gAutoPlayInterval = setInterval(() => {
+
+                    gCurrentIndex = (gCurrentIndex + 1) % gSlides.length;
+
+                    goToGallerySlide(gCurrentIndex);
+
+                }, 4000); // Ganti slide setiap 4 detik
+
+            }
+
+
+
+            function resetGalleryAutoPlay() {
+
+                clearInterval(gAutoPlayInterval);
+
+                startGalleryAutoPlay();
+
+            }
+
+
+
+            // Start gallery auto-play
+
+            startGalleryAutoPlay();
+
+        });
+
+    </script>
+
+</body>
+
+
+
+
 </html>
