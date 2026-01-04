@@ -632,6 +632,8 @@
 
             overflow: hidden;
 
+            cursor: pointer; /* Tambahkan pointer agar user tahu bisa diklik */
+
         }
 
 
@@ -650,9 +652,57 @@
 
 
 
+        /* Efek hover pada gambar layanan */
+
         .service-card:hover .card-image-wrapper img {
 
             transform: scale(1.1);
+
+        }
+
+
+
+        /* Overlay icon zoom saat hover gambar layanan */
+
+        .card-image-wrapper::after {
+
+            content: '\f00e'; /* FontAwesome expand icon */
+
+            font-family: 'Font Awesome 6 Free';
+
+            font-weight: 900;
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 50%;
+
+            transform: translate(-50%, -50%) scale(0);
+
+            color: white;
+
+            font-size: 2rem;
+
+            opacity: 0;
+
+            transition: all 0.3s ease;
+
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+
+            z-index: 2;
+
+            pointer-events: none;
+
+        }
+
+
+
+        .service-card:hover .card-image-wrapper::after {
+
+            transform: translate(-50%, -50%) scale(1);
+
+            opacity: 1;
 
         }
 
@@ -1836,6 +1886,92 @@
 
 
 
+        /* --- IMAGE ZOOM MODAL (NEW FEATURE) --- */
+
+        .img-zoom-modal {
+
+            display: none; /* Hidden by default */
+
+            position: fixed; 
+
+            z-index: 3000; /* Di atas QRIS modal (2000) */
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%; 
+
+            height: 100%; 
+
+            overflow: auto; 
+
+            background-color: rgba(0,0,0,0.9); /* Hitam transparan */
+
+            backdrop-filter: blur(8px); /* Efek blur modern */
+
+            align-items: center; 
+            justify-content: center; 
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            cursor: zoom-out; /* Klik area gelap untuk tutup */
+        }
+
+
+
+        /* Animasi saat modal muncul */
+        .img-zoom-modal.show {
+            opacity: 1;
+        }
+
+
+
+        .img-zoom-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            object-fit: contain;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek pop */
+            cursor: default;
+        }
+
+
+
+        .img-zoom-modal.show .img-zoom-content {
+            transform: scale(1);
+        }
+
+
+
+        /* Tombol Close (X) */
+        .close-zoom {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 3001;
+            line-height: 1;
+        }
+
+
+
+        .close-zoom:hover,
+        .close-zoom:focus {
+            color: var(--primary-color);
+            text-decoration: none;
+            transform: rotate(90deg);
+        }
+
+
+
         /* --- QRIS MODAL --- */
 
         .qris-modal {
@@ -2183,13 +2319,10 @@
             }
 
             
-
             .prev-btn { left: -15px; }
 
             .next-btn { right: -15px; }
-
             
-
             /* Mobile Payment Adjustments */
 
             .bank-row {
@@ -2209,9 +2342,7 @@
                 justify-content: center;
 
             }
-
         }
-
     </style>
 
 </head>
@@ -3152,6 +3283,18 @@
 
 
 
+    <!-- IMAGE ZOOM MODAL (FITUR BARU) -->
+
+    <div id="imgZoomModal" class="img-zoom-modal">
+
+        <span class="close-zoom">&times;</span>
+
+        <img class="img-zoom-content" id="expandedImg">
+
+    </div>
+
+
+
     <!-- QRIS Modal Popup -->
 
     <div id="qrisModal" class="qris-modal">
@@ -3324,22 +3467,68 @@ Mohon konfirmasinya. Terima kasih.`;
 
         }
 
+        
 
-
-        // Close modal when clicking outside content
+        // Close modal when clicking outside content (QRIS Only)
 
         window.onclick = function(event) {
 
-            const modal = document.getElementById('qrisModal');
+            const qrisModal = document.getElementById('qrisModal');
 
-            if (event.target == modal) {
+            if (event.target == qrisModal) {
 
-                modal.style.display = "none";
+                qrisModal.style.display = "none";
 
             }
 
         }
 
+
+
+        // --- IMAGE ZOOM MODAL LOGIC (FITUR BARU) ---
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Ambil elemen modal
+            const modal = document.getElementById("imgZoomModal");
+            const modalImg = document.getElementById("expandedImg");
+            const closeBtn = document.getElementsByClassName("close-zoom")[0];
+            
+            // Ambil semua gambar layanan
+            const serviceImages = document.querySelectorAll('.card-image-wrapper img');
+
+            // Tambahkan event listener ke setiap gambar layanan
+            serviceImages.forEach(img => {
+                img.addEventListener('click', function(){
+                    modal.style.display = "flex";
+                    // Sedikit delay agar transisi opacity berjalan
+                    setTimeout(() => {
+                        modal.classList.add('show');
+                    }, 10);
+                    modalImg.src = this.src;
+                });
+            });
+
+            // Fungsi tutup modal
+            function closeModal() {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.style.display = "none";
+                }, 300); // Sesuaikan dengan durasi transisi CSS
+            }
+
+            // Event klik tombol close (X)
+            closeBtn.onclick = function() { 
+                closeModal();
+            }
+
+            // Event klik area gelap di luar gambar
+            modal.onclick = function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            }
+        });
 
 
         // --- Testimonial Slider Logic ---
@@ -3397,11 +3586,8 @@ Mohon konfirmasinya. Terima kasih.`;
                 currentIndex = index;
 
                 const amountToMove = -currentIndex * 100;
-
                 track.style.transform = `translateX(${amountToMove}%)`;
-
                 
-
                 // Update dots
 
                 dots.forEach(dot => dot.classList.remove('active'));
@@ -3527,9 +3713,7 @@ Mohon konfirmasinya. Terima kasih.`;
                 const amountToMove = -gCurrentIndex * 100;
 
                 gTrack.style.transform = `translateX(${amountToMove}%)`;
-
                 
-
                 // Update dots
 
                 gDots.forEach(dot => dot.classList.remove('active'));
@@ -3608,5 +3792,3 @@ Mohon konfirmasinya. Terima kasih.`;
 
 
 </html>
-
-
