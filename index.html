@@ -2155,9 +2155,7 @@
             60% { transform: rotate(20deg); }
 
             75% { transform: rotate(0deg); }
-
             100% { transform: rotate(0deg); }
-
         }
 
 
@@ -2204,6 +2202,41 @@
 
         }
 
+        
+        /* --- MUSIC FLOATING BUTTON (NEW) --- */
+        .music-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px; /* Posisi kiri bawah */
+            background-color: var(--primary-color); /* Warna pink tema */
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1001;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+
+        .music-float:hover {
+            transform: scale(1.1);
+            background-color: var(--primary-dark);
+        }
+
+        /* Animasi berputar saat musik menyala */
+        .music-playing {
+            animation: spin-slow 4s linear infinite;
+        }
+
+        @keyframes spin-slow {
+            100% { transform: rotate(360deg); }
+        }
 
 
         /* --- RESPONSIVE --- */
@@ -3191,6 +3224,8 @@
 
                         <a href="https://www.facebook.com/DFHomeSpaOfficial" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
 
+                        <!-- YouTube Link Added Here -->
+                        <a href="https://www.youtube.com/@ARWiN9" target="_blank"><i class="fa-brands fa-youtube"></i></a>
                         <a href="https://www.tiktok.com/@df_homespa" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
 
                     </div>
@@ -3315,7 +3350,17 @@
 
     </div>
 
+    <!-- Floating Music Button -->
+    <div id="musicBtn" class="music-float" title="Putar/Jeda Musik Spa">
+        <i class="fa-solid fa-music" id="musicIcon"></i>
+    </div>
 
+    <!-- Audio Element (Hidden) -->
+    <!-- Source: Pixabay Royalty Free Meditation Music -->
+    <audio id="spaMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=meditation-impulse-3000-hz-30111.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
 
     <!-- Floating WhatsApp Button -->
 
@@ -3781,7 +3826,34 @@ Mohon konfirmasinya. Terima kasih.`;
             // Start gallery auto-play
 
             startGalleryAutoPlay();
+        });
 
+
+        // --- MUSIC PLAYER LOGIC (NEW) ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const musicBtn = document.getElementById('musicBtn');
+            const music = document.getElementById('spaMusic');
+            const musicIcon = document.getElementById('musicIcon');
+            let isPlaying = false;
+
+            musicBtn.addEventListener('click', function() {
+                if (isPlaying) {
+                    music.pause();
+                    musicIcon.classList.remove('music-playing');
+                    musicIcon.classList.remove('fa-pause');
+                    musicIcon.classList.add('fa-music');
+                } else {
+                    music.play().then(() => {
+                        musicIcon.classList.add('music-playing');
+                        musicIcon.classList.remove('fa-music');
+                        musicIcon.classList.add('fa-pause');
+                    }).catch(error => {
+                        console.log("Autoplay prevented or audio error:", error);
+                        alert("Mohon klik di sembarang tempat halaman dulu untuk memulai audio.");
+                    });
+                }
+                isPlaying = !isPlaying;
+            });
         });
 
     </script>
@@ -3792,7 +3864,3 @@ Mohon konfirmasinya. Terima kasih.`;
 
 
 </html>
-
-
-
-
