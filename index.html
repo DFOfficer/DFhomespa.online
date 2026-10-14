@@ -2,21 +2,23 @@
 
 <html lang="id">
 
-<head><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7192454291816341"
-     crossorigin="anonymous"></script> <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5619510436758001"
-     crossorigin="anonymous"></script> <script async custom-element="amp-auto-ads"
-        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-</script>
+<head>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7192454291816341"
+     crossorigin="anonymous"></script>
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5619510436758001"
      crossorigin="anonymous"></script>
+
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
 
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>DFHomespa - Perawatan & Kecantikan Favorit Para Wanita Cantik</title>
-
-    
 
     <!-- Google Fonts -->
 
@@ -26,13 +28,9 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
-    
-
     <!-- Font Awesome -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
 
     <style>
 
@@ -40,15 +38,13 @@
 
         :root {
 
-            /* THEME UPDATED TO PINK & CHEERFUL MODERN */
+            --primary-color: #E85D75;
 
-            --primary-color: #E85D75; /* Modern Rose Pink */
+            --primary-dark: #C2425A;
 
-            --primary-dark: #C2425A;  /* Darker Pink for Hover/Text */
+            --accent-color: #FFC857;
 
-            --accent-color: #FFC857; /* Cheerful Yellow/Orange */
-
-            --bg-light: #FFF0F3;      /* Very light pinkish background */
+            --bg-light: #FFF0F3;
 
             --bg-white: #FFFFFF;
 
@@ -56,7 +52,7 @@
 
             --text-light: #666666;
 
-            --shadow: 0 5px 15px rgba(232, 93, 117, 0.15); /* Shadow tinted pink */
+            --shadow: 0 5px 15px rgba(232, 93, 117, 0.15);
 
             --shadow-hover: 0 15px 30px rgba(232, 93, 117, 0.25);
 
@@ -88,9 +84,7 @@
 
 
 
-        body <amp-auto-ads type="adsense"
-        data-ad-client="ca-pub-5619510436758001">
-</amp-auto-ads>{
+        body {
 
             font-family: 'Lato', sans-serif;
 
@@ -390,6 +384,8 @@
 
             gap: 25px;
 
+            align-items: center;
+
         }
 
 
@@ -458,7 +454,7 @@
 
             height: 90vh;
 
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/u/0/d/1R7xS3b2Qn5X2Yzw9s0BSb9RUvkSpK-Oi');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://lh3.googleusercontent.com/d/1R7xS3b2Qn5X2Yzw9s0BSb9RUvkSpK-Oi');
 
             background-size: cover;
 
@@ -545,6 +541,22 @@
             border-radius: var(--radius);
 
             box-shadow: var(--shadow);
+
+        }
+
+
+
+        .about-text h4 {
+
+            font-size: 1.1rem;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: var(--accent-color);
+
+            margin-bottom: 5px;
 
         }
 
@@ -640,7 +652,7 @@
 
             overflow: hidden;
 
-            cursor: pointer; /* Tambahkan pointer agar user tahu bisa diklik */
+            cursor: pointer;
 
         }
 
@@ -660,8 +672,6 @@
 
 
 
-        /* Efek hover pada gambar layanan */
-
         .service-card:hover .card-image-wrapper img {
 
             transform: scale(1.1);
@@ -670,11 +680,9 @@
 
 
 
-        /* Overlay icon zoom saat hover gambar layanan */
-
         .card-image-wrapper::after {
 
-            content: '\f00e'; /* FontAwesome expand icon */
+            content: '\f00e';
 
             font-family: 'Font Awesome 6 Free';
 
@@ -769,26 +777,6 @@
             font-size: 1.4rem;
 
             color: var(--primary-dark);
-
-        }
-
-
-
-        .price {
-
-            display: block;
-
-            margin-bottom: 20px;
-
-            font-size: 1.2rem;
-
-            font-weight: 700;
-
-            color: var(--primary-color);
-
-            padding-bottom: 15px;
-
-            border-bottom: 1px solid rgba(0,0,0,0.05);
 
         }
 
@@ -953,6 +941,8 @@
             min-width: 100%;
 
             position: relative;
+
+            cursor: zoom-in;
 
         }
 
@@ -1456,7 +1446,7 @@
 
 
 
-        /* --- BOOKING & PROCEDURE SECTION --- */
+        /* --- BOOKING SECTION --- */
 
         #booking {
 
@@ -1516,6 +1506,38 @@
 
 
 
+        .booking-steps {
+
+            margin-top: 25px;
+
+        }
+
+
+
+        .booking-steps li {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 15px;
+
+            color: rgba(255,255,255,0.95);
+
+        }
+
+
+
+        .booking-steps i {
+
+            color: var(--accent-color);
+
+        }
+
+
+
         .booking-form-wrapper {
 
             background: white;
@@ -1550,7 +1572,7 @@
 
         .form-group {
 
-            margin-bottom: 1px;
+            margin-bottom: 15px;
 
         }
 
@@ -1602,7 +1624,19 @@
 
 
 
-        /* --- FOOTER & MODAL STYLES (UPDATED 4 COLUMNS) --- */
+        .form-row {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+
+        }
+
+
+
+        /* --- FOOTER (4 COLUMNS) --- */
 
         footer {
 
@@ -1616,13 +1650,9 @@
 
 
 
-        /* Grid Layout Update */
-
         .footer-grid {
 
             display: grid;
-
-            /* Reduced minmax from 250px to 220px to fit 4 cols on desktop/tablet */
 
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 
@@ -1640,23 +1670,21 @@
 
             margin-bottom: 15px;
 
-            font-size: 1.1rem; /* Reduced from 1.4rem */
+            font-size: 1.1rem;
 
         }
 
 
 
-        /* Text Size Reduction */
-
         .footer-col p, .footer-col a {
 
             color: #ccc;
 
-            margin-bottom: 8px; /* Reduced from 10px */
+            margin-bottom: 8px;
 
             display: block;
 
-            font-size: 0.85rem; /* Reduced from 0.95rem */
+            font-size: 0.85rem;
 
             line-height: 1.5;
 
@@ -1686,7 +1714,7 @@
 
         .social-links a {
 
-            width: 35px; /* Slightly smaller */
+            width: 35px;
 
             height: 35px;
 
@@ -1716,21 +1744,11 @@
 
 
 
-        /* --- PAYMENT INFO SECTION (Column 4) --- */
-
-        .payment-section {
-
-            /* Border removed since it's now its own column, adds visual clutter */
-
-            margin-top: 0;
-
-        }
-
-
+        /* --- PAYMENT INFO (Column 4) --- */
 
         .payment-title {
 
-            font-size: 0.8rem; /* Reduced from 1rem */
+            font-size: 0.8rem;
 
             font-weight: 700;
 
@@ -1754,11 +1772,11 @@
 
             justify-content: space-between;
 
-            margin-bottom: 8px; /* Reduced from 10px */
+            margin-bottom: 8px;
 
             background: rgba(255,255,255,0.05);
 
-            padding: 6px 10px; /* Reduced from 8px 12px */
+            padding: 6px 10px;
 
             border-radius: 6px;
 
@@ -1790,7 +1808,7 @@
 
         .bank-icon {
 
-            font-size: 1rem; /* Reduced from 1.2rem */
+            font-size: 1rem;
 
             color: white;
 
@@ -1806,7 +1824,7 @@
 
             font-weight: bold;
 
-            font-size: 0.8rem; /* Reduced from 0.9rem */
+            font-size: 0.8rem;
 
             color: #ffffff;
 
@@ -1818,13 +1836,13 @@
 
             font-family: 'Courier New', monospace;
 
-            font-size: 0.75rem; /* Reduced from 0.85rem */
+            font-size: 0.75rem;
 
             color: #ffffff;
 
             cursor: pointer;
 
-            padding: 3px 6px; /* Reduced padding */
+            padding: 3px 6px;
 
             border-radius: 4px;
 
@@ -1862,11 +1880,23 @@
 
 
 
+        .bank-owner {
+
+            font-size: 0.75rem;
+
+            color: #aaa;
+
+            margin-top: 2px;
+
+        }
+
+
+
         .qris-trigger {
 
             margin-top: 10px;
 
-            font-size: 0.8rem; /* Reduced from 0.9rem */
+            font-size: 0.8rem;
 
             color: #ffffff;
 
@@ -1894,15 +1924,15 @@
 
 
 
-        /* --- IMAGE ZOOM MODAL (NEW FEATURE) --- */
+        /* --- IMAGE ZOOM MODAL --- */
 
         .img-zoom-modal {
 
-            display: none; /* Hidden by default */
+            display: none;
 
             position: fixed; 
 
-            z-index: 3000; /* Di atas QRIS modal (2000) */
+            z-index: 3000;
 
             left: 0;
 
@@ -1914,68 +1944,102 @@
 
             overflow: auto; 
 
-            background-color: rgba(0,0,0,0.9); /* Hitam transparan */
+            background-color: rgba(0,0,0,0.9);
 
-            backdrop-filter: blur(8px); /* Efek blur modern */
+            backdrop-filter: blur(8px);
 
             align-items: center; 
+
             justify-content: center; 
+
             opacity: 0;
+
             transition: opacity 0.3s ease;
-            cursor: zoom-out; /* Klik area gelap untuk tutup */
+
+            cursor: zoom-out;
+
         }
 
 
 
-        /* Animasi saat modal muncul */
         .img-zoom-modal.show {
+
             opacity: 1;
+
         }
 
 
 
         .img-zoom-content {
+
             margin: auto;
+
             display: block;
+
             max-width: 90%;
+
             max-height: 90vh;
+
             border-radius: var(--radius);
+
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+
             object-fit: contain;
+
             transform: scale(0.8);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek pop */
+
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
             cursor: default;
+
         }
 
 
 
         .img-zoom-modal.show .img-zoom-content {
+
             transform: scale(1);
+
         }
 
 
 
-        /* Tombol Close (X) */
         .close-zoom {
+
             position: absolute;
+
             top: 20px;
+
             right: 35px;
+
             color: #f1f1f1;
+
             font-size: 40px;
+
             font-weight: bold;
+
             transition: 0.3s;
+
             cursor: pointer;
+
             z-index: 3001;
+
             line-height: 1;
+
         }
 
 
 
         .close-zoom:hover,
+
         .close-zoom:focus {
+
             color: var(--primary-color);
+
             text-decoration: none;
+
             transform: rotate(90deg);
+
         }
 
 
@@ -2024,7 +2088,7 @@
 
             width: 90%;
 
-            max-width: 350px;
+            max-width: 380px;
 
             text-align: center;
 
@@ -2040,9 +2104,11 @@
 
         .qris-content img {
 
-            width: 200px;
+            width: 100%;
 
-            height: 200px;
+            max-width: 300px;
+
+            height: auto;
 
             margin: 0 auto 15px;
 
@@ -2077,6 +2143,18 @@
             font-size: 0.9rem;
 
             color: #666;
+
+        }
+
+
+
+        .qris-owner {
+
+            margin-top: 8px;
+
+            font-weight: 700;
+
+            color: var(--primary-dark);
 
         }
 
@@ -2163,7 +2241,9 @@
             60% { transform: rotate(20deg); }
 
             75% { transform: rotate(0deg); }
+
             100% { transform: rotate(0deg); }
+
         }
 
 
@@ -2210,41 +2290,320 @@
 
         }
 
-        
-        /* --- MUSIC FLOATING BUTTON (NEW) --- */
-        .music-float {
+
+
+        /* --- MUSIC PLAYER ELEGANT --- */
+
+        .music-player {
+
             position: fixed;
+
             bottom: 30px;
-            left: 30px; /* Posisi kiri bawah */
-            background-color: var(--primary-color); /* Warna pink tema */
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+            left: 30px;
+
             z-index: 1001;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid white;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 10px 14px 10px 10px;
+
+            background: rgba(255, 255, 255, 0.9);
+
+            backdrop-filter: blur(12px);
+
+            -webkit-backdrop-filter: blur(12px);
+
+            border-radius: 60px;
+
+            border: 1px solid rgba(232, 93, 117, 0.25);
+
+            box-shadow: 0 10px 30px rgba(232, 93, 117, 0.25);
+
+            max-width: calc(100vw - 60px);
+
+            animation: mp-float 4s ease-in-out infinite;
+
         }
 
-        .music-float:hover {
-            transform: scale(1.1);
-            background-color: var(--primary-dark);
+
+
+        @keyframes mp-float {
+
+            0%, 100% { transform: translateY(0); }
+
+            50% { transform: translateY(-6px); }
+
         }
 
-        /* Animasi berputar saat musik menyala */
-        .music-playing {
+
+
+        .mp-disc {
+
+            width: 48px;
+
+            height: 48px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+            font-size: 26px;
+
+            flex-shrink: 0;
+
+            box-shadow: 0 4px 12px rgba(232,93,117,0.4), inset 0 0 0 4px rgba(255,255,255,0.15);
+
+        }
+
+
+
+        .mp-disc i {
+
             animation: spin-slow 4s linear infinite;
+
+            animation-play-state: paused;
+
         }
 
-        @keyframes spin-slow {
-            100% { transform: rotate(360deg); }
+
+
+        .music-player.playing .mp-disc i {
+
+            animation-play-state: running;
+
         }
+
+
+
+        .mp-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            line-height: 1.3;
+
+            min-width: 0;
+
+        }
+
+
+
+        .mp-title {
+
+            font-family: 'Playfair Display', serif;
+
+            font-weight: 700;
+
+            font-size: 1.05rem;
+
+            color: var(--primary-dark);
+
+            letter-spacing: 0.5px;
+
+            white-space: nowrap;
+
+        }
+
+
+
+        /* LIRIK DOMINAN — teks gradasi mengkilap */
+
+        .mp-lyrics {
+
+            font-size: 0.78rem;
+
+            font-style: italic;
+
+            font-weight: 700;
+
+            letter-spacing: 0.4px;
+
+            white-space: nowrap;
+
+            color: var(--primary-dark);
+
+            background: linear-gradient(90deg, #C2425A, #FFC857, #E85D75, #C2425A);
+
+            background-size: 300% auto;
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            animation: shimmer 3s linear infinite;
+
+        }
+
+
+
+        @keyframes shimmer {
+
+            to { background-position: 300% center; }
+
+        }
+
+
+
+        .mp-eq {
+
+            display: flex;
+
+            align-items: flex-end;
+
+            gap: 3px;
+
+            height: 18px;
+
+            flex-shrink: 0;
+
+        }
+
+
+
+        .mp-eq span {
+
+            width: 3px;
+
+            height: 30%;
+
+            border-radius: 2px;
+
+            background: linear-gradient(to top, var(--primary-color), var(--accent-color));
+
+        }
+
+
+
+        .music-player.playing .mp-eq span {
+
+            animation: eq-bounce 0.9s ease-in-out infinite;
+
+        }
+
+        .music-player.playing .mp-eq span:nth-child(2) { animation-delay: 0.2s; }
+
+        .music-player.playing .mp-eq span:nth-child(3) { animation-delay: 0.4s; }
+
+        .music-player.playing .mp-eq span:nth-child(4) { animation-delay: 0.6s; }
+
+
+
+        @keyframes eq-bounce {
+
+            0%, 100% { height: 25%; }
+
+            50% { height: 100%; }
+
+        }
+
+
+
+        .mp-toggle {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+
+            color: white;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            box-shadow: 0 4px 12px rgba(232,93,117,0.4);
+
+            transition: transform 0.3s, box-shadow 0.3s;
+
+        }
+
+
+
+        .mp-toggle:hover {
+
+            transform: scale(1.1);
+
+            box-shadow: 0 6px 16px rgba(232,93,117,0.55);
+
+        }
+
+
+
+        /* --- TOAST --- */
+
+        .toast {
+
+            position: fixed;
+
+            bottom: 100px;
+
+            left: 50%;
+
+            transform: translateX(-50%) translateY(20px);
+
+            background: var(--primary-dark);
+
+            color: white;
+
+            padding: 10px 25px;
+
+            border-radius: 50px;
+
+            font-size: 0.9rem;
+
+            z-index: 5000;
+
+            opacity: 0;
+
+            transition: all 0.3s ease;
+
+            pointer-events: none;
+
+            max-width: 90%;
+
+            text-align: center;
+
+        }
+
+
+
+        .toast.show {
+
+            opacity: 1;
+
+            transform: translateX(-50%) translateY(0);
+
+        }
+
 
 
         /* --- RESPONSIVE --- */
@@ -2360,11 +2719,28 @@
             }
 
             
+
             .prev-btn { left: -15px; }
 
             .next-btn { right: -15px; }
+
             
-            /* Mobile Payment Adjustments */
+
+            .form-row {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            
+
+            .gallery-slide img {
+
+                height: 300px;
+
+            }
+
+            
 
             .bank-row {
 
@@ -2383,12 +2759,58 @@
                 justify-content: center;
 
             }
+
         }
+
+
+
+        @media (max-width: 480px) {
+
+            .music-player {
+
+                bottom: 20px;
+
+                left: 15px;
+
+                padding: 8px 10px;
+
+                gap: 8px;
+
+            }
+
+            .mp-lyrics { font-size: 0.65rem; }
+
+            .mp-eq { display: none; }
+
+            .mp-disc { width: 40px; height: 40px; font-size: 20px; }
+
+            .mp-title { font-size: 0.9rem; }
+
+            .mp-toggle { width: 34px; height: 34px; font-size: 13px; }
+
+            .wa-float {
+
+                width: 50px;
+
+                height: 50px;
+
+                font-size: 24px;
+
+                bottom: 20px;
+
+                right: 20px;
+
+            }
+
+        }
+
     </style>
 
 </head>
 
 <body>
+
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-5619510436758001"></amp-auto-ads>
 
 
 
@@ -2402,7 +2824,7 @@
 
                 <div class="logo">
 
-                    <img src="https://z-cdn-media.chatglm.cn/files/c232cdea-9649-43fb-86a9-57d0825ad637.png?auth_key=1867126908-29f0073e744e4aa4925500c3c72ffadf-0-2fffe6775687759fef9d56b460d13183" alt="Logo DF Homespa" class="logo-img">
+                    <img src="https://lh3.googleusercontent.com/d/1PuH4yvAlieoJz806je1eJdjwIRkkCLlD" alt="Logo DF Homespa" class="logo-img">
 
                     <span>DF Homespa</span>
 
@@ -2474,7 +2896,7 @@
 
                     <div class="about-img">
 
-                        <img src="https://lh3.googleusercontent.com/u/0/d/1RAXN2EMh0_DKRCHw2JO26evq7qOP1QFi" alt="Terapis DF Homespa">
+                        <img src="https://lh3.googleusercontent.com/d/17qwLhHkoMUqwDBabo64YgRfVP5DZzKby" alt="Terapis DF Homespa">
 
                     </div>
 
@@ -2508,7 +2930,7 @@
 
                     <h2>Daftar Layanan Kami</h2>
 
-                    <p>Paket Treatment Pilihan Sesuai Kebuhutan Anda</p>
+                    <p>Paket Treatment Pilihan Sesuai Kebutuhan Anda</p>
 
                 </div>
 
@@ -2524,7 +2946,7 @@
 
                             <span class="card-badge">Best Seller</span>
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1ydaro2MK0QhoICWHygzbWo0fLM3X69ha">
+                            <img src="https://lh3.googleusercontent.com/d/1ydaro2MK0QhoICWHygzbWo0fLM3X69ha" alt="Paket Special">
 
                         </div>
 
@@ -2548,7 +2970,7 @@
 
                             <span class="card-badge">Spesial</span>
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1wBaylStcu-UwF0ibCD0zXZwjldrzljuj">
+                            <img src="https://lh3.googleusercontent.com/d/1wBaylStcu-UwF0ibCD0zXZwjldrzljuj" alt="Paket Cantik">
 
                         </div>
 
@@ -2570,7 +2992,7 @@
 
                         <div class="card-image-wrapper">
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1_pnSjQ-5Diy-Llf2gYeT_oHJv1SYJTe5">
+                            <img src="https://lh3.googleusercontent.com/d/1_pnSjQ-5Diy-Llf2gYeT_oHJv1SYJTe5" alt="Paket Aura">
 
                         </div>
 
@@ -2592,7 +3014,7 @@
 
                         <div class="card-image-wrapper">
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1OrfBXkvh2-OxTe00urb-TfJzelpPyloM">
+                            <img src="https://lh3.googleusercontent.com/d/1OrfBXkvh2-OxTe00urb-TfJzelpPyloM" alt="Paket Aura Cantik">
 
                         </div>
 
@@ -2608,21 +3030,21 @@
 
 
 
-                    <!-- Service 5: Paket Bumil -->
+                    <!-- Service 5: Paket Fresh -->
 
                     <article class="service-card">
 
                         <div class="card-image-wrapper">
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1uKoJFS6Br_9d6krFGtvjAFczM6Rn4P49">
+                            <img src="https://lh3.googleusercontent.com/d/1dkcK9kMLijszwGFakRvyjwmSMdtESfPG" alt="Paket Fresh">
 
                         </div>
 
                         <div class="card-body">
 
-                            <h3>Paket Bumil</h3>
+                            <h3>Paket Fresh</h3>
 
-                            <p>Perawatan lembut pijat bumil DF Home Spa, memberikan kenyamanan, relaksasi, serta menjaga kesehatan ibu dan bayi selama kehamilan.</p>
+                            <p>Perawatan menyegarkan tubuh dengan lulur pembuangan sel kulit mati, membuat kulit bersih, halus, dan kilau semula. Pilihan bahan: Susu, Green Tea, dan Whitening. Cocok untuk tubuh yang butuh refreshing!</p>
 
                         </div>
 
@@ -2636,7 +3058,7 @@
 
                         <div class="card-image-wrapper">
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/13vHZGxLHjY000wYg6pi9N35rI4RkrvDE">
+                            <img src="https://lh3.googleusercontent.com/d/1KAuFspGLGzdO49rxfLzmleh3E7M8Khdo" alt="Price List DF Homespa">
 
                         </div>
 
@@ -2722,7 +3144,7 @@
 
 
 
-        <!-- Gallery Section (Single Image Slider) -->
+        <!-- Gallery Section (7 Slide) -->
 
         <section id="gallery" class="section-padding">
 
@@ -2748,51 +3170,45 @@
 
                     <div class="gallery-track" id="galleryTrack">
 
-                        <!-- Slide 1 -->
-
                         <div class="gallery-slide">
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1qRXTWxa_Ju3qAGjwdgQuNfJ_rwYMWQjn">
+                            <img src="https://lh3.googleusercontent.com/d/1qRXTWxa_Ju3qAGjwdgQuNfJ_rwYMWQjn" alt="Galeri 1">
 
                         </div>
 
-                        <!-- Slide 2 -->
-
                         <div class="gallery-slide">
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1Ew_JxaGz1yfgPOWB1cqdqyAMDdWFFeDC">
+                            <img src="https://lh3.googleusercontent.com/d/1Ew_JxaGz1yfgPOWB1cqdqyAMDdWFFeDC" alt="Galeri 2">
 
                         </div>
 
-                        <!-- Slide 3 -->
-
                         <div class="gallery-slide">
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1RTci8wDGfP15YHz8siuE9CyBIQ6pGKbR">
+                            <img src="https://lh3.googleusercontent.com/d/1RTci8wDGfP15YHz8siuE9CyBIQ6pGKbR" alt="Galeri 3">
 
                         </div>
 
-                        <!-- Slide 4 -->
-
                         <div class="gallery-slide">
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1eNyZXbC8w1i925TXmKb6ivmHKJR6-1ar">
+                            <img src="https://lh3.googleusercontent.com/d/1eNyZXbC8w1i925TXmKb6ivmHKJR6-1ar" alt="Galeri 4">
 
                         </div>
 
-                        <!-- Slide 5 -->
-
                         <div class="gallery-slide">
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1u48VmQXRrwMAW2z4GZDcqPNJQMSpnkrH">
+                            <img src="https://lh3.googleusercontent.com/d/1u48VmQXRrwMAW2z4GZDcqPNJQMSpnkrH" alt="Galeri 5">
 
                         </div>
 
-                        <!-- Slide 6 -->
+                        <div class="gallery-slide">
+
+                            <img src="https://lh3.googleusercontent.com/d/1tJqwrQ4vJ9RU_y_yWsfqwxcG9-Ec5SdA" alt="Galeri 6">
+
+                        </div>
 
                         <div class="gallery-slide">
 
-                            <img src="https://lh3.googleusercontent.com/u/0/d/1tJqwrQ4vJ9RU_y_yWsfqwxcG9-Ec5SdA">
+                            <img src="https://lh3.googleusercontent.com/d/1I7cNjrxI1HaUen8SYwFZOe18-bFlo1-Z" alt="Galeri 7">
 
                         </div>
 
@@ -2810,7 +3226,7 @@
 
 
 
-        <!-- Testimonials Slider Section -->
+        <!-- Testimonials Section -->
 
         <section id="testimonials" class="section-padding">
 
@@ -2836,8 +3252,6 @@
 
                         <div class="slider-track" id="sliderTrack">
 
-                            <!-- Slide 1 -->
-
                             <div class="slide">
 
                                 <i class="fa-solid fa-quote-left quote-icon"></i>
@@ -2854,35 +3268,17 @@
 
                             </div>
 
-                            <!-- Slide 2 -->
+                            
 
                             <div class="slide">
 
                                 <i class="fa-solid fa-quote-left quote-icon"></i>
 
-                                <p class="testimonial-text">"Suka banget sama lulur susunya, wangi dan bikin kulit halus. Sangat recommended buat yang capek kerja dan gak mau keluar rumah."</p>
+                                <p class="testimonial-text">"Paket Cantik-nya juara! Terapisnya ramah dan sabar banget. Harga bersahabat tapi kualitas spa bintang lima. Pasti order lagi!"</p>
 
                                 <div class="client-info">
 
-                                    <h4>Amalia</h4>
-
-                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
-
-                                </div>
-
-                            </div>
-
-                            <!-- Slide 3 -->
-
-                            <div class="slide">
-
-                                <i class="fa-solid fa-quote-left quote-icon"></i>
-
-                                <p class="testimonial-text">"Pijat Rahimnya ampuh banget buat saya pasca lahiran. Terapisnya juga sabar dan paham betul tekniknya."</p>
-
-                                <div class="client-info">
-
-                                    <h4>Rina Mariani</h4>
+                                    <h4>Dewi Lestari</h4>
 
                                     <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
 
@@ -2890,17 +3286,17 @@
 
                             </div>
 
-                            <!-- Slide 4 -->
+
 
                             <div class="slide">
 
                                 <i class="fa-solid fa-quote-left quote-icon"></i>
 
-                                <p class="testimonial-text">"Buka Aura Wajah-nya bikin muka jadi glowing dan cerah. Jadi pede keluar rumah tanpa makeup tebal."</p>
+                                <p class="testimonial-text">"Pijat bumilnya sangat lembut dan membantu mengurangi pegal di trimester akhir. Terapisnya profesional dan memahami posisi aman untuk ibu hamil."</p>
 
                                 <div class="client-info">
 
-                                    <h4>Diana Putri</h4>
+                                    <h4>Rina Kartika</h4>
 
                                     <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
 
@@ -2908,35 +3304,17 @@
 
                             </div>
 
-                            <!-- Slide 5 -->
+
 
                             <div class="slide">
 
                                 <i class="fa-solid fa-quote-left quote-icon"></i>
 
-                                <p class="testimonial-text">"Awalnya ragu, tapi setelah coba langsung jatuh cinta! Terapisnya sangat sopan dan profesional."</p>
+                                <p class="testimonial-text">"Booking via WhatsApp gampang banget, admin fast respon. Alat dan handuknya bersih dan wangi. Recommended banget untuk yang sibuk kerja!"</p>
 
                                 <div class="client-info">
 
-                                    <h4>Ibu Dira</h4>
-
-                                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-
-                                </div>
-
-                            </div>
-
-                            <!-- Slide 6 -->
-
-                            <div class="slide">
-
-                                <i class="fa-solid fa-quote-left quote-icon"></i>
-
-                                <p class="testimonial-text">"Bookingnya gampang banget via WA. Respon cepat dan harga terjangkau untuk pelayanan sekelas hotel."</p>
-
-                                <div class="client-info">
-
-                                    <h4>Maya Sari</h4>
+                                    <h4>Maya Putri</h4>
 
                                     <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
 
@@ -2952,9 +3330,7 @@
 
                     <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
 
-                    
 
-                    <!-- Dots Navigation -->
 
                     <div class="slider-dots" id="sliderDots"></div>
 
@@ -2974,31 +3350,25 @@
 
                 <div class="section-title text-center">
 
-                    <h2>Lokasi & Kontak</h2>
+                    <h2>Lokasi & Area Layanan</h2>
 
-                    <p>Kami siap melayani area Makassar, Gowa, Maros dan sekitarnya</p>
+                    <p>Terapis kami siap datang ke lokasi Anda</p>
 
                 </div>
 
-                
+
 
                 <div class="location-content">
 
-                    <!-- Kolom 1: Peta -->
-
                     <div class="map-wrapper">
 
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.6499847271125!2d119.44446257434913!3d-5.159890652127798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbf1d760bd3e78d%3A0xee6220b7dd5bee37!2sDfSpa%20Hawai%20Inn!5e0!3m2!1sen!2sid!4v1767117178628!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://maps.google.com/maps?q=-4.8270885,119.4393464&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     </div>
 
-
-
-                    <!-- Kolom 2: Kartu Info -->
-
                     <div class="info-card">
 
-                        <img src="https://picsum.photos/seed/spa_lobby/600/300" alt="Suasana DF Homespa" class="info-img">
+                        <img src="https://lh3.googleusercontent.com/d/17qwLhHkoMUqwDBabo64YgRfVP5DZzKby" alt="Info DF Homespa" class="info-img">
 
                         <div class="info-body">
 
@@ -3008,9 +3378,9 @@
 
                                 <div>
 
-                                    <strong>Alamat Kantor</strong>
+                                    <strong>Lokasi Kami</strong>
 
-                                    <span>Jl. Adiyaksa, Kota Makassar</span>
+                                    <span>DFhomespa Official — Makassar & sekitarnya, Sulawesi Selatan. Terapis datang langsung ke rumah, apartemen, atau hotel Anda.</span>
 
                                 </div>
 
@@ -3018,25 +3388,41 @@
 
                             <div class="info-item">
 
-                                <i class="fa-regular fa-clock"></i>
+                                <i class="fa-solid fa-clock"></i>
 
                                 <div>
 
                                     <strong>Jam Operasional</strong>
 
-                                    <span>Setiap Hari: 09.00 - 22.00 WIB</span>
+                                    <span>Setiap Hari: 08.00 - 20.00 WITA</span>
 
                                 </div>
 
                             </div>
 
-                            <div class="location-cta">
+                            <div class="info-item">
 
-                                <a href="https://www.google.com/maps/dir//DfSpa+Hawai+Inn,+Jl.+Adiyaksa,+Masale,+Panakkukang,+Makassar+City,+South+Sulawesi+90132/@-5.1598957,119.4285834,15z/data=!4m16!1m7!3m6!1s0x2dbf1d760bd3e78d:0xee6220b7dd5bee37!2sDfSpa+Hawai+Inn!8m2!3d-5.159896!4d119.4470375!16s%2Fg%2F11fr32zsnz!4m7!1m0!1m5!1m1!1s0x2dbf1d760bd3e78d:0xee6220b7dd5bee37!2m2!1d119.4470375!2d-5.159896?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-primary" style="font-size: 0.8rem; padding: 5px 20px;">
+                                <i class="fa-brands fa-whatsapp"></i>
 
-                                    <i class="fa-solid fa-diamond-turn-right"></i> Petunjuk Arah
+                                <div>
+
+                                    <strong>WhatsApp</strong>
+
+                                    <span>0821-9379-5693</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="location-cta" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+
+                                <a href="https://www.google.com/maps/place/DFhomespa+Official/@-4.8270885,119.4393464,17z" target="_blank" class="btn btn-outline">
+
+                                    <i class="fa-solid fa-diamond-turn-right"></i> Rute Maps
 
                                 </a>
+
+                                <a href="#booking" class="btn btn-primary">Reservasi</a>
 
                             </div>
 
@@ -3052,7 +3438,7 @@
 
 
 
-        <!-- MERGED SECTION: Booking & Procedure -->
+        <!-- Booking Section -->
 
         <section id="booking" class="section-padding">
 
@@ -3060,25 +3446,31 @@
 
                 <div class="booking-grid">
 
-                    <!-- Left Side: Text Content -->
-
                     <div class="booking-info">
 
-                        <h2>Cara Pemesanan</h2>
+                        <h2>Cara Reservasi<br>Sangat Mudah</h2>
 
-                        <p>Mudah dan simpel, cukup dari genggaman tangan Anda</p>
+                        <p>Isi formulir di samping, sistem kami akan langsung mengarahkan Anda ke WhatsApp untuk konfirmasi pesanan.</p>
+
+                        <ul class="booking-steps">
+
+                            <li><i class="fa-solid fa-circle-check"></i> Isi data & pilih paket layanan</li>
+
+                            <li><i class="fa-solid fa-circle-check"></i> Kirim melalui WhatsApp</li>
+
+                            <li><i class="fa-solid fa-circle-check"></i> Admin konfirmasi jadwal & terapis</li>
+
+                            <li><i class="fa-solid fa-circle-check"></i> Terapis datang ke lokasi Anda</li>
+
+                        </ul>
 
                     </div>
 
-                    
-
-                    <!-- Right Side: Booking Form -->
-
                     <div class="booking-form-wrapper">
 
-                        <h3>Form Reservasi</h3>
+                        <h3>Formulir Reservasi</h3>
 
-                        <form id="whatsappForm" onsubmit="kirimWhatsApp(event)">
+                        <form id="bookingForm">
 
                             <div class="form-group">
 
@@ -3088,67 +3480,69 @@
 
                             </div>
 
-                            
-
                             <div class="form-group">
 
-                                <label for="alamat">Alamat Lengkap</label>
+                                <label for="paket">Pilih Paket</label>
 
-                                <textarea id="alamat" class="form-control" rows="3" placeholder="Alamat lengkap untuk kedatangan terapis" required></textarea>
+                                <select id="paket" class="form-control" required>
 
-                            </div>
+                                    <option value="" disabled selected>-- Pilih Paket Layanan --</option>
 
+                                    <option>Paket Special</option>
 
+                                    <option>Paket Cantik</option>
 
-                            <div class="form-group">
+                                    <option>Paket Aura</option>
 
-                                <label for="layanan">Jenis Layanan</label>
+                                    <option>Paket Aura Cantik</option>
 
-                                <select id="layanan" class="form-control" required>
+                                    <option>Paket Fresh</option>
 
-                                    <option value="" disabled selected>Pilih Layanan...</option>
-
-                                    <option value="Paket Special">Paket Special</option>
-
-                                    <option value="Paket Cantik">Paket Cantik</option>
-
-                                    <option value="Paket Aura">Paket Aura</option>
-
-                                    <option value="Paket Aura Cantik">Paket Aura Cantik</option>
-
-                                    <option value="Paket Bertiga">Paket Bertiga</option>
-
-                                    <option value="Paket Datang Langsung">Paket Datang Langsung</option>
+                                    <option>Lainnya (Konsultasi Dulu)</option>
 
                                 </select>
 
                             </div>
 
+                            <div class="form-row">
 
+                                <div class="form-group">
 
-                            <div class="form-group">
+                                    <label for="tanggal">Tanggal</label>
 
-                                <label for="tanggal">Tanggal Pemesanan</label>
+                                    <input type="date" id="tanggal" class="form-control" required>
 
-                                <input type="date" id="tanggal" class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="jam">Jam</label>
+
+                                    <input type="time" id="jam" class="form-control" required>
+
+                                </div>
 
                             </div>
 
-
-
                             <div class="form-group">
 
-                                <label for="jam">Jam Layanan</label>
+                                <label for="alamat">Alamat Lengkap</label>
 
-                                <input type="time" id="jam" class="form-control" required>
+                                <textarea id="alamat" class="form-control" rows="2" placeholder="Nama jalan, nomor rumah, patokan..." required></textarea>
 
                             </div>
 
+                            <div class="form-group">
 
+                                <label for="catatan">Catatan (Opsional)</label>
+
+                                <input type="text" id="catatan" class="form-control" placeholder="Contoh: terapis wanita, bawa matras sendiri, dll">
+
+                            </div>
 
                             <button type="submit" class="btn btn-primary" style="width: 100%;">
 
-                                <i class="fa-brands fa-whatsapp"></i> Ajukan Reservasi
+                                <i class="fa-brands fa-whatsapp"></i> Kirim Reservasi via WhatsApp
 
                             </button>
 
@@ -3162,153 +3556,117 @@
 
         </section>
 
-
-
     </main>
 
 
 
-    <!-- Footer (Updated 4 Columns) -->
+    <!-- Footer -->
 
-    <footer id="contact">
+    <footer>
 
         <div class="container">
 
             <div class="footer-grid">
 
-                <!-- Column 1 -->
+                <!-- Col 1: Tentang -->
 
                 <div class="footer-col">
 
-                    <div class="logo" style="margin-bottom: 15px;">
+                    <h3>DF Homespa</h3>
 
-                        <img src="https://z-cdn-media.chatglm.cn/files/c232cdea-9649-43fb-86a9-57d0825ad637.png?auth_key=1867126908-29f0073e744e4aa4925500c3c72ffadf-0-2fffe6775687759fef9d56b460d13183" alt="Logo DF Homespa" class="logo-img">
-
-                        <span>DF Homespa</span>
-
-                    </div>
-
-                    <p>Layanan spa dan pijat panggilan profesional terpercaya untuk kesehatan dan kecantikan keluarga Anda. Kenyamanan rumah Anda adalah prioritas kami.</p>
-
-                </div>
-
-                
-
-                <!-- Column 2 -->
-
-                <div class="footer-col">
-
-                    <h3>Layanan Populer</h3>
-
-                    <a href="#services">Full Body Massage</a>
-
-                    <a href="#services">Pijat Menaikkan Rahim</a>
-
-                    <a href="#services">Buka Aura Wajah</a>
-
-                    <a href="#services">Totok Miss V</a>
-
-                    <a href="#services">Ratus Miss V</a>
-
-                </div>
-
-                
-
-                <!-- Column 3: Kontak & Sosial -->
-
-                <div class="footer-col">
-
-                    <h3>Kontak & Sosial</h3>
-
-                    <p><i class="fa-brands fa-whatsapp"></i> 0821 9379 5693</p>
-
-                    <p><i class="fa-regular fa-envelope"></i> info@dfhomespa.com</p>
-
-                    
+                    <p>Layanan pijat & spa panggilan profesional yang mengutamakan kenyamanan, kebersihan, dan privasi Anda.</p>
 
                     <div class="social-links">
 
-                        <a href="https://www.instagram.com/df_homespa?igsh=YWp3cHU2aTA2amtr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
 
-                        <a href="https://www.facebook.com/DFHomeSpaOfficial" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
 
-                        <!-- YouTube Link Added Here -->
-                        <a href="https://www.youtube.com/@ARWiN9" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="https://www.tiktok.com/@df_homespa" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+
+                        <a href="https://wa.me/6282193795693" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
                     </div>
 
                 </div>
 
+                
 
-
-                <!-- Column 4: Payment Info -->
+                <!-- Col 2: Menu -->
 
                 <div class="footer-col">
 
-                    <h3>Info Pembayaran</h3>
+                    <h3>Menu</h3>
 
-                    <div class="payment-section">
+                    <a href="#hero">Beranda</a>
 
-                        <!-- Bank BCA -->
+                    <a href="#about">Tentang Kami</a>
 
-                        <div class="bank-row">
+                    <a href="#services">Layanan</a>
 
-                            <div class="bank-left">
+                    <a href="#gallery">Galeri</a>
 
-                                <i class="fa-solid fa-building-columns bank-icon"></i>
+                    <a href="#testimonials">Testimoni</a>
 
-                                <span class="bank-name">BCA</span>
+                    <a href="#booking">Cara Pesan</a>
 
-                            </div>
+                </div>
 
-                            <div class="account-number" onclick="copyToClipboard(this, '7970302659')" title="Klik untuk menyalin">
+                
 
-                                <span>7970302659</span>
+                <!-- Col 3: Kontak -->
 
-                                <i class="fa-regular fa-copy"></i>
+                <div class="footer-col">
 
-                            </div>
+                    <h3>Kontak</h3>
 
-                        </div>
+                    <a href="https://wa.me/6282193795693"><i class="fa-brands fa-whatsapp"></i> 0821-9379-5693</a>
 
+                    <p><i class="fa-regular fa-clock"></i> Setiap Hari: 08.00 - 20.00 WITA</p>
 
+                    <p><i class="fa-solid fa-location-dot"></i> Makassar & sekitarnya, Sulawesi Selatan</p>
 
-                        <!-- Bank Mandiri -->
+                    <a href="https://www.google.com/maps/place/DFhomespa+Official/@-4.8270885,119.4393464,17z" target="_blank">
 
-                        <div class="bank-row">
+                        <i class="fa-solid fa-map-location-dot"></i> Lihat di Google Maps
 
-                            <div class="bank-left">
+                    </a>
 
-                                <i class="fa-solid fa-building-columns bank-icon"></i>
+                </div>
 
-                                <span class="bank-name">Mandiri</span>
+                
 
-                            </div>
+                <!-- Col 4: Pembayaran -->
 
-                            <div class="account-number" onclick="copyToClipboard(this, '1520018072575')" title="Klik untuk menyalin">
+                <div class="footer-col payment-section">
 
-                                <span>1520018072575</span>
-
-                                <i class="fa-regular fa-copy"></i>
-
-                            </div>
-
-                        </div>
+                    <div class="payment-title">Pembayaran</div>
 
 
 
-                        <!-- QRIS Link -->
+                    <div class="bank-row">
 
-                        <div class="qris-trigger" onclick="openQRIS()">
+                        <div class="bank-left">
 
-                            <i class="fa-solid fa-qrcode"></i>
+                            <i class="fa-solid fa-building-columns bank-icon"></i>
 
-                            <span>Klik untuk Kode QRIS</span>
+                            <span class="bank-name">Mandiri</span>
 
                         </div>
+
+                        <span class="account-number" onclick="copyRek(this, '1520018072575')">1520018072575 <i class="fa-regular fa-copy"></i></span>
 
                     </div>
+
+                    <p class="bank-owner">a.n. Dian Fatimah</p>
+
+
+
+                    <span class="qris-trigger" onclick="openQris()">
+
+                        <i class="fa-solid fa-qrcode"></i> Bayar via QRIS
+
+                    </span>
 
                 </div>
 
@@ -3318,7 +3676,7 @@
 
         <div class="copyright">
 
-            <p>&copy; 2025 DF Homespa. All Rights Reserved.</p>
+            &copy; 2025 DF Homespa — Makassar. All Rights Reserved.
 
         </div>
 
@@ -3326,53 +3684,9 @@
 
 
 
-    <!-- IMAGE ZOOM MODAL (FITUR BARU) -->
+    <!-- WA Floating -->
 
-    <div id="imgZoomModal" class="img-zoom-modal">
-
-        <span class="close-zoom">&times;</span>
-
-        <img class="img-zoom-content" id="expandedImg">
-
-    </div>
-
-
-
-    <!-- QRIS Modal Popup -->
-
-    <div id="qrisModal" class="qris-modal">
-
-        <div class="qris-content">
-
-            <span class="close-qris" onclick="closeQRIS()">&times;</span>
-
-            <h4>Scan QRIS</h4>
-
-            <!-- Menggunakan API QR Code Generator untuk membuat QR otomatis dari nomor DANA -->
-
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=6282193795693" alt="QRIS DANA">
-
-            <p>Scan untuk pembayaran via DANA</p>
-
-        </div>
-
-    </div>
-
-    <!-- Floating Music Button -->
-    <div id="musicBtn" class="music-float" title="Putar/Jeda Musik Spa">
-        <i class="fa-solid fa-music" id="musicIcon"></i>
-    </div>
-
-    <!-- Audio Element (Hidden) -->
-    <!-- Source: Pixabay Royalty Free Meditation Music -->
-    <audio id="spaMusic" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=meditation-impulse-3000-hz-30111.mp3" type="audio/mpeg">
-        Browser Anda tidak mendukung elemen audio.
-    </audio>
-
-    <!-- Floating WhatsApp Button -->
-
-    <a href="https://wa.me/6282193795693?text=Halo%20DF%20Homespa,%20saya%20mau%20booking%20spa." class="wa-float" target="_blank" title="Chat WhatsApp">
+    <a href="https://wa.me/6282193795693?text=Halo%20DF%20Homespa%2C%20saya%20ingin%20bertanya%20tentang%20layanan" class="wa-float" target="_blank" aria-label="Chat WhatsApp">
 
         <i class="fa-brands fa-whatsapp"></i>
 
@@ -3380,506 +3694,522 @@
 
 
 
-    <!-- Scripts -->
+    <!-- Music Player Elegant (MUSIK CATBOX - DIJAMIN JALAN) -->
+
+    <div class="music-player" id="musicPlayer">
+
+        <div class="mp-disc"><i class="fa-solid fa-compact-disc"></i></div>
+
+        <div class="mp-info">
+
+            <span class="mp-title">DF Homespa</span>
+
+            <span class="mp-lyrics">♪ Pilihan Favorit Wanita Cantik ♪</span>
+
+        </div>
+
+        <div class="mp-eq"><span></span><span></span><span></span><span></span></div>
+
+        <button class="mp-toggle" id="musicBtn" aria-label="Putar Musik">
+
+            <i class="fa-solid fa-play" id="mpIcon"></i>
+
+        </button>
+
+    </div>
+
+    <audio id="bgMusic" loop preload="auto" src="https://files.catbox.moe/d2r51c.mp3"></audio>
+
+
+
+    <!-- QRIS Modal -->
+
+    <div id="qrisModal" class="qris-modal">
+
+        <div class="qris-content">
+
+            <span class="close-qris" onclick="closeQris()">&times;</span>
+
+            <img src="https://lh3.googleusercontent.com/d/1NtMfjdgUmfdpsIph7UAJSKDHWk_AY7Do" alt="QRIS DF Homespa - Dian Fatimah">
+
+            <h4>Scan QRIS</h4>
+
+            <p>Scan kode QR menggunakan e-wallet atau m-banking apa saja (GoPay, OVO, DANA, ShopeePay, m-banking).</p>
+
+            <p class="qris-owner">a.n. Dian Fatimah</p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Image Zoom Modal -->
+
+    <div id="imgZoomModal" class="img-zoom-modal" onclick="closeZoom(event)">
+
+        <span class="close-zoom" onclick="closeZoom(event)">&times;</span>
+
+        <img class="img-zoom-content" id="zoomImg" src="" alt="Zoom">
+
+    </div>
+
+
+
+    <!-- Toast -->
+
+    <div class="toast" id="toast">Nomor rekening disalin!</div>
+
+
 
     <script>
 
-        // --- Mobile Menu Toggle ---
+        /* ====================================
+
+           KONFIGURASI
+
+           ==================================== */
+
+        const WA_NUMBER = '6282193795693';
+
+
+
+        /* --- Mobile Menu --- */
 
         function toggleMenu() {
 
-            const navLinks = document.getElementById('navLinks');
-
-            navLinks.classList.toggle('active');
+            document.getElementById('navLinks').classList.toggle('active');
 
         }
 
 
 
-        // --- Booking Form Logic ---
+        /* --- Testimonial Slider --- */
 
-        function kirimWhatsApp(e) {
+        const sliderTrack = document.getElementById('sliderTrack');
 
-            e.preventDefault(); // Mencegah reload halaman
+        const slides = document.querySelectorAll('.slide');
+
+        const sliderDots = document.getElementById('sliderDots');
+
+        let currentSlide = 0;
 
 
 
-            // Ambil nilai dari form
+        slides.forEach((_, i) => {
+
+            const dot = document.createElement('span');
+
+            dot.classList.add('dot');
+
+            if (i === 0) dot.classList.add('active');
+
+            dot.addEventListener('click', () => { goToSlide(i); });
+
+            sliderDots.appendChild(dot);
+
+        });
+
+
+
+        function updateSlider() {
+
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+
+        }
+
+
+
+        function goToSlide(i) {
+
+            currentSlide = i;
+
+            updateSlider();
+
+        }
+
+
+
+        document.querySelector('.next-btn').addEventListener('click', () => {
+
+            currentSlide = (currentSlide + 1) % slides.length;
+
+            updateSlider();
+
+        });
+
+
+
+        document.querySelector('.prev-btn').addEventListener('click', () => {
+
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+
+            updateSlider();
+
+        });
+
+
+
+        setInterval(() => {
+
+            currentSlide = (currentSlide + 1) % slides.length;
+
+            updateSlider();
+
+        }, 6000);
+
+
+
+        /* --- Gallery Slider --- */
+
+        const galleryTrack = document.getElementById('galleryTrack');
+
+        const gallerySlides = document.querySelectorAll('.gallery-slide');
+
+        const galleryDots = document.getElementById('galleryDots');
+
+        let currentGallery = 0;
+
+        let galleryTimer;
+
+
+
+        gallerySlides.forEach((_, i) => {
+
+            const dot = document.createElement('span');
+
+            dot.classList.add('g-dot');
+
+            if (i === 0) dot.classList.add('active');
+
+            dot.addEventListener('click', () => { goToGallery(i); resetGalleryTimer(); });
+
+            galleryDots.appendChild(dot);
+
+        });
+
+
+
+        function updateGallery() {
+
+            galleryTrack.style.transform = `translateX(-${currentGallery * 100}%)`;
+
+            document.querySelectorAll('.g-dot').forEach((d, i) => d.classList.toggle('active', i === currentGallery));
+
+        }
+
+
+
+        function goToGallery(i) { currentGallery = i; updateGallery(); }
+
+
+
+        function nextGallery() {
+
+            currentGallery = (currentGallery + 1) % gallerySlides.length;
+
+            updateGallery();
+
+        }
+
+
+
+        function prevGallery() {
+
+            currentGallery = (currentGallery - 1 + gallerySlides.length) % gallerySlides.length;
+
+            updateGallery();
+
+        }
+
+
+
+        function resetGalleryTimer() {
+
+            clearInterval(galleryTimer);
+
+            galleryTimer = setInterval(nextGallery, 5000);
+
+        }
+
+
+
+        document.querySelector('.g-next-btn').addEventListener('click', () => { nextGallery(); resetGalleryTimer(); });
+
+        document.querySelector('.g-prev-btn').addEventListener('click', () => { prevGallery(); resetGalleryTimer(); });
+
+        resetGalleryTimer();
+
+
+
+        /* --- QRIS Modal --- */
+
+        const qrisModal = document.getElementById('qrisModal');
+
+
+
+        function openQris() {
+
+            qrisModal.style.display = 'flex';
+
+        }
+
+
+
+        function closeQris() {
+
+            qrisModal.style.display = 'none';
+
+        }
+
+
+
+        qrisModal.addEventListener('click', (e) => {
+
+            if (e.target === qrisModal) closeQris();
+
+        });
+
+
+
+        /* --- Image Zoom Modal --- */
+
+        const imgZoomModal = document.getElementById('imgZoomModal');
+
+        const zoomImg = document.getElementById('zoomImg');
+
+
+
+        function openZoom(src) {
+
+            zoomImg.src = src;
+
+            imgZoomModal.style.display = 'flex';
+
+            setTimeout(() => imgZoomModal.classList.add('show'), 10);
+
+        }
+
+
+
+        function closeZoom(e) {
+
+            if (e && e.target !== imgZoomModal && !e.target.classList.contains('close-zoom')) return;
+
+            imgZoomModal.classList.remove('show');
+
+            setTimeout(() => imgZoomModal.style.display = 'none', 300);
+
+        }
+
+
+
+        document.querySelectorAll('.card-image-wrapper img, .gallery-slide img').forEach(img => {
+
+            img.addEventListener('click', (e) => {
+
+                e.stopPropagation();
+
+                openZoom(img.src);
+
+            });
+
+        });
+
+
+
+        document.addEventListener('keydown', (e) => {
+
+            if (e.key === 'Escape') {
+
+                closeQris();
+
+                if (imgZoomModal.style.display === 'flex') closeZoom();
+
+            }
+
+        });
+
+
+
+        /* --- Copy Nomor Rekening --- */
+
+        function copyRek(el, noRek) {
+
+            navigator.clipboard.writeText(noRek).then(() => {
+
+                const icon = el.querySelector('i');
+
+                const original = icon.className;
+
+                icon.className = 'fa-solid fa-check';
+
+                showToast('✔ ' + noRek + ' (Mandiri, a.n. Dian Fatimah) disalin!');
+
+                setTimeout(() => icon.className = original, 1500);
+
+            }).catch(() => {
+
+                showToast('Gagal menyalin. Salin manual ya!');
+
+            });
+
+        }
+
+
+
+        /* --- Toast --- */
+
+        let toastTimer;
+
+        function showToast(msg) {
+
+            const toast = document.getElementById('toast');
+
+            toast.textContent = msg;
+
+            toast.classList.add('show');
+
+            clearTimeout(toastTimer);
+
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+
+        }
+
+
+
+        /* ============================================
+
+           MUSIC PLAYER ELEGANT — CATBOX (LANGSUNG)
+
+           ============================================ */
+
+        const music = document.getElementById('bgMusic');
+
+        const musicBtn = document.getElementById('musicBtn');
+
+        const musicPlayer = document.getElementById('musicPlayer');
+
+        const mpIcon = document.getElementById('mpIcon');
+
+        let isPlaying = false;
+
+
+
+        musicBtn.addEventListener('click', () => {
+
+            if (isPlaying) {
+
+                music.pause();
+
+                musicPlayer.classList.remove('playing');
+
+                mpIcon.className = 'fa-solid fa-play';
+
+                isPlaying = false;
+
+            } else {
+
+                mpIcon.className = 'fa-solid fa-spinner fa-spin';
+
+                music.play().then(() => {
+
+                    musicPlayer.classList.add('playing');
+
+                    mpIcon.className = 'fa-solid fa-pause';
+
+                    isPlaying = true;
+
+                    showToast('♪ Now Playing: DF Homespa — Pilihan Favorit Wanita Cantik');
+
+                }).catch((err) => {
+
+                    mpIcon.className = 'fa-solid fa-play';
+
+                    showToast('❌ Audio gagal diputar. Coba refresh halaman.');
+
+                    console.error(err);
+
+                });
+
+            }
+
+        });
+
+
+
+        // Ulangi otomatis saat lagu selesai
+
+        music.addEventListener('ended', () => {
+
+            music.currentTime = 0;
+
+            music.play();
+
+        });
+
+
+
+        /* --- Booking Form ke WhatsApp --- */
+
+        const tanggalInput = document.getElementById('tanggal');
+
+        tanggalInput.min = new Date().toISOString().split('T')[0];
+
+
+
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+
+            e.preventDefault();
+
+
 
             const nama = document.getElementById('nama').value;
 
-            const alamat = document.getElementById('alamat').value;
-
-            const layanan = document.getElementById('layanan').value;
+            const paket = document.getElementById('paket').value;
 
             const tanggal = document.getElementById('tanggal').value;
 
             const jam = document.getElementById('jam').value;
 
+            const alamat = document.getElementById('alamat').value;
 
+            const catatan = document.getElementById('catatan').value || '-';
 
-            // Nomor Admin WA (Format: 628...)
 
-            const nomorAdmin = "6282193795693";
 
+            const pesan = 
 
+`Halo *DF Homespa* 👋
 
-            // Format Pesan
+Saya ingin reservasi layanan:
 
-            const pesan = `Halo Admin DF Homespa, saya ingin memesan layanan spa.
+Nama: ${nama}
 
+Paket: ${paket}
 
+Tanggal: ${tanggal}
 
-*Nama:* ${nama}
+Jam: ${jam}
 
-*Alamat:* ${alamat}
+Alamat: ${alamat}
 
-*Jenis Layanan:* ${layanan}
+Catatan: ${catatan}
 
-*Tanggal:* ${tanggal}
 
-*Jam:* ${jam}
 
+Mohon konfirmasinya ya, terima kasih! 🙏`;
 
 
-Mohon konfirmasinya. Terima kasih.`;
 
+            window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesan)}`, '_blank');
 
-
-            // Encode pesan agar aman untuk URL
-
-            const encodedPesan = encodeURIComponent(pesan);
-
-
-
-            // Buka WhatsApp
-
-            const urlWa = `https://wa.me/${nomorAdmin}?text=${encodedPesan}`;
-
-            window.open(urlWa, '_blank');
-
-        }
-
-
-
-        // --- Copy to Clipboard Function ---
-
-        function copyToClipboard(element, text) {
-
-            navigator.clipboard.writeText(text).then(() => {
-
-                const originalContent = element.innerHTML;
-
-                
-
-                // Visual feedback: Ganti ikon jadi check dan teks jadi "Tersalin"
-
-                element.innerHTML = '<i class="fa-solid fa-check"></i> <span>Tersalin!</span>';
-
-                element.style.color = '#4ade80'; // Green color
-
-                element.style.background = 'rgba(74, 222, 128, 0.2)';
-
-
-
-                // Reset setelah 2 detik
-
-                setTimeout(() => {
-
-                    element.innerHTML = originalContent;
-
-                    element.style.color = '';
-
-                    element.style.background = '';
-
-                }, 2000);
-
-            }).catch(err => {
-
-                console.error('Gagal menyalin: ', err);
-
-            });
-
-        }
-
-
-
-        // --- QRIS Modal Functions ---
-
-        function openQRIS() {
-
-            document.getElementById('qrisModal').style.display = 'flex';
-
-        }
-
-
-
-        function closeQRIS() {
-
-            document.getElementById('qrisModal').style.display = 'none';
-
-        }
-
-        
-
-        // Close modal when clicking outside content (QRIS Only)
-
-        window.onclick = function(event) {
-
-            const qrisModal = document.getElementById('qrisModal');
-
-            if (event.target == qrisModal) {
-
-                qrisModal.style.display = "none";
-
-            }
-
-        }
-
-
-
-        // --- IMAGE ZOOM MODAL LOGIC (FITUR BARU) ---
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // Ambil elemen modal
-            const modal = document.getElementById("imgZoomModal");
-            const modalImg = document.getElementById("expandedImg");
-            const closeBtn = document.getElementsByClassName("close-zoom")[0];
-            
-            // Ambil semua gambar layanan
-            const serviceImages = document.querySelectorAll('.card-image-wrapper img');
-
-            // Tambahkan event listener ke setiap gambar layanan
-            serviceImages.forEach(img => {
-                img.addEventListener('click', function(){
-                    modal.style.display = "flex";
-                    // Sedikit delay agar transisi opacity berjalan
-                    setTimeout(() => {
-                        modal.classList.add('show');
-                    }, 10);
-                    modalImg.src = this.src;
-                });
-            });
-
-            // Fungsi tutup modal
-            function closeModal() {
-                modal.classList.remove('show');
-                setTimeout(() => {
-                    modal.style.display = "none";
-                }, 300); // Sesuaikan dengan durasi transisi CSS
-            }
-
-            // Event klik tombol close (X)
-            closeBtn.onclick = function() { 
-                closeModal();
-            }
-
-            // Event klik area gelap di luar gambar
-            modal.onclick = function(event) {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            }
-        });
-
-
-        // --- Testimonial Slider Logic ---
-
-        document.addEventListener('DOMContentLoaded', function() {
-
-            const track = document.getElementById('sliderTrack');
-
-            const slides = Array.from(track.children);
-
-            const nextBtn = document.querySelector('.next-btn');
-
-            const prevBtn = document.querySelector('.prev-btn');
-
-            const dotsContainer = document.getElementById('sliderDots');
-
-            
-
-            let currentIndex = 0;
-
-            let autoPlayInterval;
-
-
-
-            // Create Dots based on number of slides
-
-            slides.forEach((_, index) => {
-
-                const dot = document.createElement('div');
-
-                dot.classList.add('dot');
-
-                if (index === 0) dot.classList.add('active');
-
-                dot.addEventListener('click', () => {
-
-                    goToSlide(index);
-
-                });
-
-                dotsContainer.appendChild(dot);
-
-            });
-
-
-
-            const dots = Array.from(dotsContainer.children);
-
-
-
-            // Function to move slide
-
-            function goToSlide(index) {
-
-                currentIndex = index;
-
-                const amountToMove = -currentIndex * 100;
-                track.style.transform = `translateX(${amountToMove}%)`;
-                
-                // Update dots
-
-                dots.forEach(dot => dot.classList.remove('active'));
-
-                dots[currentIndex].classList.add('active');
-
-            }
-
-
-
-            // Next Slide
-
-            nextBtn.addEventListener('click', () => {
-
-                currentIndex = (currentIndex + 1) % slides.length;
-
-                goToSlide(currentIndex);
-
-                resetAutoPlay();
-
-            });
-
-
-
-            // Previous Slide
-
-            prevBtn.addEventListener('click', () => {
-
-                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-
-                goToSlide(currentIndex);
-
-                resetAutoPlay();
-
-            });
-
-
-
-            // Auto Play Function
-
-            function startAutoPlay() {
-
-                autoPlayInterval = setInterval(() => {
-
-                    currentIndex = (currentIndex + 1) % slides.length;
-
-                    goToSlide(currentIndex);
-
-                }, 5000); // Ganti slide setiap 5 detik
-
-            }
-
-
-
-            function resetAutoPlay() {
-
-                clearInterval(autoPlayInterval);
-
-                startAutoPlay();
-
-            }
-
-
-
-            // Start auto-play on load
-
-            startAutoPlay();
-
-
-
-            // --- GALLERY SLIDER LOGIC ---
-
-            const gTrack = document.getElementById('galleryTrack');
-
-            const gSlides = Array.from(gTrack.children);
-
-            const gNextBtn = document.querySelector('.g-next-btn');
-
-            const gPrevBtn = document.querySelector('.g-prev-btn');
-
-            const gDotsContainer = document.getElementById('galleryDots');
-
-
-
-            let gCurrentIndex = 0;
-
-            let gAutoPlayInterval;
-
-
-
-            // Create Gallery Dots
-
-            gSlides.forEach((_, index) => {
-
-                const dot = document.createElement('div');
-
-                dot.classList.add('g-dot');
-
-                if (index === 0) dot.classList.add('active');
-
-                dot.addEventListener('click', () => {
-
-                    goToGallerySlide(index);
-
-                });
-
-                gDotsContainer.appendChild(dot);
-
-            });
-
-
-
-            const gDots = Array.from(gDotsContainer.children);
-
-
-
-            // Function to move gallery slide
-
-            function goToGallerySlide(index) {
-
-                gCurrentIndex = index;
-
-                const amountToMove = -gCurrentIndex * 100;
-
-                gTrack.style.transform = `translateX(${amountToMove}%)`;
-                
-                // Update dots
-
-                gDots.forEach(dot => dot.classList.remove('active'));
-
-                gDots[gCurrentIndex].classList.add('active');
-
-            }
-
-
-
-            // Next Slide Gallery
-
-            gNextBtn.addEventListener('click', () => {
-
-                gCurrentIndex = (gCurrentIndex + 1) % gSlides.length;
-
-                goToGallerySlide(gCurrentIndex);
-
-                resetGalleryAutoPlay();
-
-            });
-
-
-
-            // Previous Slide Gallery
-
-            gPrevBtn.addEventListener('click', () => {
-
-                gCurrentIndex = (gCurrentIndex - 1 + gSlides.length) % gSlides.length;
-
-                goToGallerySlide(gCurrentIndex);
-
-                resetGalleryAutoPlay();
-
-            });
-
-
-
-            // Auto Play Function Gallery
-
-            function startGalleryAutoPlay() {
-
-                gAutoPlayInterval = setInterval(() => {
-
-                    gCurrentIndex = (gCurrentIndex + 1) % gSlides.length;
-
-                    goToGallerySlide(gCurrentIndex);
-
-                }, 4000); // Ganti slide setiap 4 detik
-
-            }
-
-
-
-            function resetGalleryAutoPlay() {
-
-                clearInterval(gAutoPlayInterval);
-
-                startGalleryAutoPlay();
-
-            }
-
-
-
-            // Start gallery auto-play
-
-            startGalleryAutoPlay();
-        });
-
-
-        // --- MUSIC PLAYER LOGIC (NEW) ---
-        document.addEventListener('DOMContentLoaded', function() {
-            const musicBtn = document.getElementById('musicBtn');
-            const music = document.getElementById('spaMusic');
-            const musicIcon = document.getElementById('musicIcon');
-            let isPlaying = false;
-
-            musicBtn.addEventListener('click', function() {
-                if (isPlaying) {
-                    music.pause();
-                    musicIcon.classList.remove('music-playing');
-                    musicIcon.classList.remove('fa-pause');
-                    musicIcon.classList.add('fa-music');
-                } else {
-                    music.play().then(() => {
-                        musicIcon.classList.add('music-playing');
-                        musicIcon.classList.remove('fa-music');
-                        musicIcon.classList.add('fa-pause');
-                    }).catch(error => {
-                        console.log("Autoplay prevented or audio error:", error);
-                        alert("Mohon klik di sembarang tempat halaman dulu untuk memulai audio.");
-                    });
-                }
-                isPlaying = !isPlaying;
-            });
         });
 
     </script>
 
 </body>
 
-
-
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
